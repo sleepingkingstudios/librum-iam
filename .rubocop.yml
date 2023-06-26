@@ -1,0 +1,104 @@
+require:
+  - rubocop-factory_bot
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+
+RSpec:
+  Language:
+    ExampleGroups:
+      Regular:
+        - context
+        - describe
+        - wrap_context
+      Skipped:
+        - xcontext
+        - xdescribe
+        - xwrap_context
+      Focused:
+        - fcontext
+        - fdescribe
+        - fwrap_context
+    Includes:
+      Examples:
+        - finclude_contract
+        - finclude_examples
+        - fwrap_examples
+        - include_contract
+        - include_examples
+        - wrap_examples
+        - xinclude_contract
+        - xinclude_examples
+        - xwrap_examples
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
+
+Layout/LineLength:
+  AllowedPatterns:
+    - '\A\s*#'
+  Max: 80
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+  IndentationWidth: ~
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb
+    - spec/**/*_contract*.rb
+    - spec/**/*_factories.rb
+    - spec/**/*_spec.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*
+
+Metrics/ModuleLength:
+  Exclude:
+    - spec/**/*_contract*.rb
+
+RSpec/BeNil:
+  Enabled: false
+
+RSpec/ExampleWording:
+  Enabled: false
+
+RSpec/FactoryBot/SyntaxMethods:
+  Enabled: false
+
+RSpec/HookArgument:
+  EnforcedStyle: example
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+RSpec/NamedSubject:
+  Exclude:
+    - spec/**/*_contract*.rb
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - db/migrate/*
+    - spec/**/*
+
+Style/NestedParenthesizedCalls:
+  Exclude:
+    - spec/**/*
