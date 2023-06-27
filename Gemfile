@@ -5,6 +5,9 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in core.gemspec.
 gemspec
 
+gem 'cuprum',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/cuprum'
 gem 'cuprum-rails',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-rails'
