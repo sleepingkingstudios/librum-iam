@@ -30,4 +30,15 @@ FactoryBot.define do
   factory :generic_credential,
     class:  'Librum::Iam::GenericCredential',
     parent: :credential
+
+  factory :password_credential,
+    class:  'Librum::Iam::PasswordCredential',
+    parent: :credential \
+  do
+    transient do
+      password { 'password' }
+    end
+
+    encrypted_password { BCrypt::Password.create(password).to_s }
+  end
 end
