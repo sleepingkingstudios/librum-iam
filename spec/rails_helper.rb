@@ -37,6 +37,7 @@ RSpec.configure do |config|
   # their own instance methods difficult. The following stubs out this behavior
   # in tests and replaces it with the core Ruby behavior.
   config.before(:example, type: :component) do
+    # :nocov:
     allow(subject).to receive(:respond_to?) \
     do |symbol, include_all = false|
       Object
@@ -44,6 +45,7 @@ RSpec.configure do |config|
         .bind(subject)
         .call(symbol, include_all)
     end
+    # :nocov:
   end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

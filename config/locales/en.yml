@@ -1,0 +1,5 @@
+en:
+  errors:
+    messages:
+      email_address: 'must be an email address'
+      kebab_case: 'must be in kebab-case'

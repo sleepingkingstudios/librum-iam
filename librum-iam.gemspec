@@ -31,8 +31,10 @@ Gem::Specification.new do |gem|
     Dir['{app,config,db,lib}/**/*', 'LICENSE.md', 'Rakefile', 'README.md']
   end
 
-  gem.add_dependency 'cuprum', '~> 1.1'
   gem.add_dependency 'librum-core'
+
+  gem.add_dependency 'cuprum',       '~> 1.1'
+  gem.add_dependency 'cuprum-rails', '~> 0.1'
 
   gem.add_dependency 'pg',    '~> 1.5'
   gem.add_dependency 'rails', '~> 7.0.4'
