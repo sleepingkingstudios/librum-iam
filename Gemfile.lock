@@ -39,6 +39,7 @@ PATH
       bcrypt (~> 3.1.19)
       cuprum (~> 1.1)
       cuprum-rails (~> 0.1)
+      jwt (~> 2.7)
       librum-core
       pg (~> 1.5)
       rails (~> 7.0.5)
@@ -139,6 +140,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     json (2.6.3)
+    jwt (2.7.1)
     language_server-protocol (3.17.0.3)
     loofah (2.21.3)
       crass (~> 1.0.2)
