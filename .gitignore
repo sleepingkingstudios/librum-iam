@@ -1,5 +1,18 @@
-/.bundle/
-/doc/
-/log/*.log
-/pkg/
-/tmp/
+# Ignore bundler config.
+/.bundle
+Gemfile.lock
+
+# Ignore all logfiles and tempfiles.
+.byebug_history
+/log/*
+/public/assets
+/spec/examples.txt
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore local and generated documentation.
+/coverage/*
+/doc/*
+.yardoc
+.yardopts

@@ -35,6 +35,9 @@ RSpec:
         - xinclude_examples
         - xwrap_examples
 
+FactoryBot/SyntaxMethods:
+  Enabled: false
+
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
@@ -70,9 +73,6 @@ RSpec/BeNil:
   Enabled: false
 
 RSpec/ExampleWording:
-  Enabled: false
-
-RSpec/FactoryBot/SyntaxMethods:
   Enabled: false
 
 RSpec/HookArgument:
