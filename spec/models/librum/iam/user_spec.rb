@@ -72,6 +72,11 @@ RSpec.describe Librum::Iam::User, type: :model do
     :username,
     default: ''
 
+  ## Associations
+  include_contract 'should have many',
+    :credentials,
+    factory_name: :generic_credential
+
   describe '#admin?' do
     include_examples 'should define predicate', :admin?, false
 

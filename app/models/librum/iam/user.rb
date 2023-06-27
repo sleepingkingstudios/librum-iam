@@ -12,6 +12,11 @@ module Librum::Iam
       SUPERADMIN: 'superadmin'
     ).freeze
 
+    ## Associations
+    has_many :credentials,
+      class_name: 'Librum::Iam::Credential',
+      dependent:  :destroy
+
     ### Validations
     validates :email,
       presence:   true,
