@@ -53,8 +53,8 @@ jobs:
       run: psql "postgresql://postgres:postgres_password@localhost:5432/postgres" -c 'SELECT 1;'
 
     # Create the test database and set the schema.
-    # - name: Set up Database
-    #   run: bundle exec rake db:create db:schema:load db:test:prepare
+    - name: Set up Database
+      run: bundle exec rake db:create db:schema:load db:test:prepare
 
     # Run the RSpec tests.
     - name: Run Ruby tests

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sleepingkingstudios/librum-core
-  revision: c3e510f935a658899a011c200f80a20765073719
+  revision: 04f85c47315218184340ef189207314a4f7f010b
   branch: main
   specs:
     librum-core (0.1.0)
@@ -17,6 +17,7 @@ PATH
   remote: .
   specs:
     librum-iam (0.1.0)
+      cuprum (~> 1.1)
       librum-core
       pg (~> 1.5)
       rails (~> 7.0.4)
