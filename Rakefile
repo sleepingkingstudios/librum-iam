@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
+require_relative 'config/application'
 
-load 'rails/tasks/statistics.rake'
-
-require 'bundler/gem_tasks'
+Rails.application.load_tasks
