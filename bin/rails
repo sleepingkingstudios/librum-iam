@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 ENGINE_ROOT = File.expand_path('..', __dir__)
-ENGINE_PATH = File.expand_path('../lib/core/engine', __dir__)
+ENGINE_PATH = File.expand_path('../lib/librum/iam/engine', __dir__)
 
 require_relative '../config/boot'
 
