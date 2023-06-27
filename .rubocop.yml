@@ -57,6 +57,7 @@ Layout/ParameterAlignment:
 Metrics/BlockLength:
   Exclude:
     - config/routes.rb
+    - lib/librum/iam/rspec/contracts/**/*.rb
     - spec/**/*_contract*.rb
     - spec/**/*_factories.rb
     - spec/**/*_spec.rb
@@ -64,6 +65,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - db/migrate/*
+    - lib/librum/iam/rspec/contracts/**/*.rb
 
 Metrics/ModuleLength:
   Exclude:
