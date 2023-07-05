@@ -3,7 +3,6 @@
 require 'librum/core/responders/html/view_responder'
 require 'librum/core/view/layouts/page'
 require 'librum/iam/actions/sessions/create'
-require 'librum/iam/actions/sessions/destroy'
 require 'librum/iam/authentication/errors/invalid_login'
 
 module Librum::Iam::View
@@ -55,6 +54,6 @@ module Librum::Iam::View
 
     action :create,  Librum::Iam::Actions::Sessions::Create
 
-    action :destroy, Librum::Iam::Actions::Sessions::Destroy
+    action :destroy, Cuprum::Rails::Action
   end
 end

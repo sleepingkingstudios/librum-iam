@@ -32,10 +32,6 @@ module Librum::Iam::Actions::Sessions
         .call(username: params['username'], password: params['password'])
     end
 
-    def native_session
-      request.native_session
-    end
-
     def process(request:)
       super
 
@@ -45,9 +41,7 @@ module Librum::Iam::Actions::Sessions
       session    = Librum::Iam::Session.new(credential: credential)
       token      = step { build_token(session) }
 
-      write_session(token)
-
-      {}
+      { 'token' => token }
     end
 
     def validate_parameters
@@ -59,10 +53,6 @@ module Librum::Iam::Actions::Sessions
         Librum::Iam::Authentication::Errors::InvalidLogin.new(errors: errors)
 
       failure(error)
-    end
-
-    def write_session(token)
-      native_session['auth_token'] = token
     end
   end
 end

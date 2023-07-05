@@ -103,6 +103,6 @@ RSpec.describe Librum::Iam::View::SessionsController do
 
   include_contract 'should define action',
     :destroy,
-    Librum::Iam::Actions::Sessions::Destroy,
+    Cuprum::Rails::Action,
     member: false
 end
