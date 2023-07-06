@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require 'librum/core/view/components/button'
 require 'librum/core/view/components/form_buttons'
 require 'librum/core/view/components/form_field'
-require 'librum/core/view/components/link'
 
 require 'librum/iam/view/components/users/passwords'
 

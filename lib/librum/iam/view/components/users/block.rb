@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'librum/core/view/components/data_list'
+require 'librum/core/view/components/link'
 
 require 'librum/iam/view/components/users'
 

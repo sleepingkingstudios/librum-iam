@@ -64,6 +64,20 @@ RSpec.describe Librum::Iam::View::Components::Users::Block, type: :component do
             </div>
           </div>
         </div>
+
+        <h2 class="title is-4">Security</h2>
+
+        <p>
+          <a class="has-text-link" href="/authentication/user/password" target="_self">
+            <span class="icon-text">
+              <span class="icon">
+                <i class="fas fa-user-lock"></i>
+              </span>
+
+              <span>Update Password</span>
+            </span>
+          </a>
+        </p>
       HTML
     end
 

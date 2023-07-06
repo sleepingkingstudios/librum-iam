@@ -3,3 +3,17 @@
     Librum::Core::View::Components::DataList.new(data: data, fields: fields)
   )
 %>
+
+<h2 class="title is-4">Security</h2>
+
+<p>
+  <%=
+    render(
+      Librum::Core::View::Components::Link.new(
+        Librum::Iam::Engine.config.authentication_user_password_path,
+        icon:  'user-lock',
+        label: 'Update Password'
+      )
+    )
+  %>
+</p>

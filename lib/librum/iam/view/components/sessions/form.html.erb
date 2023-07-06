@@ -1,0 +1,30 @@
+<%=
+  form_with(
+    url: Librum::Iam::Engine.config.authentication_session_path
+  ) do |form|
+%>
+  <%=
+    render(
+      Librum::Core::View::Components::FormField.new(
+        'username',
+        icon: 'user'
+      )
+    )
+  %>
+
+  <%=
+    render(
+      Librum::Core::View::Components::FormField.new(
+        'password',
+        icon: 'key',
+        type: 'password'
+      )
+    )
+  %>
+
+  <%=
+    render(
+      Librum::Core::View::Components::FormButtons.new(submit_label: 'Log In')
+    )
+  %>
+<% end %>
