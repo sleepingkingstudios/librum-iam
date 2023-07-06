@@ -1,0 +1,39 @@
+<div class="block user-session">
+  <div class="icon-text">
+    <span class="icon mr-1">
+      <% if session %>
+      <i class="fa-solid fa-user"></i>
+      <% else %>
+      <i class="fa-solid fa-user-xmark"></i>
+      <% end %>
+    </span>
+
+    <% if session %>
+    <span>
+      You are currently logged in as
+      <%=
+        render(
+          Librum::Core::View::Components::Link.new(
+            Librum::Iam::Engine.config.authentication_user_path,
+            label: current_user.username
+          )
+        )
+      %>
+    </span>
+
+    <%=
+      form_with(
+        url:    Librum::Iam::Engine.config.authentication_session_path,
+        method: :delete,
+        class:  'destroy_session_form'
+      ) do |form|
+    %>
+      <div class="buttons is-right">
+        <%= form.submit "Log Out", class: "button is-danger is-inverted" %>
+      </div>
+    <% end %>
+    <% else %>
+    <span>You are not currently logged in.
+    <% end %>
+  </div>
+</div>

@@ -85,6 +85,8 @@ RSpec.describe Librum::Iam::View::SessionsController do
 
     it { expect(resource.resource_name).to be == 'sessions' }
 
+    it { expect(resource.singular?).to be true }
+
     it { expect(resource.skip_authentication.to_a).to be == %w[create destroy] }
   end
 
@@ -101,6 +103,6 @@ RSpec.describe Librum::Iam::View::SessionsController do
 
   include_contract 'should define action',
     :destroy,
-    Librum::Iam::Actions::Sessions::Destroy,
+    Cuprum::Rails::Action,
     member: false
 end

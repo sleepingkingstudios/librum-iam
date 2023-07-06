@@ -116,7 +116,7 @@ RSpec.describe Librum::Iam::Authentication::Passwords::Update do
           command.call(new_password: new_password, old_password: old_password)
         )
           .to be_a_passing_result
-          .with_value(nil)
+          .with_value(an_instance_of(Librum::Iam::PasswordCredential))
       end
 
       it 'should deactivate the old credential' do # rubocop:disable RSpec/ExampleLength
@@ -154,6 +154,14 @@ RSpec.describe Librum::Iam::Authentication::Passwords::Update do
         password   = BCrypt::Password.new(credential.encrypted_password)
 
         expect(password).to be == new_password
+      end
+
+      it 'should return the created password credential' do
+        result =
+          command.call(new_password: new_password, old_password: old_password)
+        credential = Librum::Iam::PasswordCredential.order(:created_at).last
+
+        expect(result.value).to be == credential
       end
     end
 
@@ -181,7 +189,7 @@ RSpec.describe Librum::Iam::Authentication::Passwords::Update do
           command.call(new_password: new_password, old_password: old_password)
         )
           .to be_a_passing_result
-          .with_value(nil)
+          .with_value(an_instance_of(Librum::Iam::PasswordCredential))
       end
 
       it 'should deactivate the old credential' do # rubocop:disable RSpec/ExampleLength
@@ -219,6 +227,14 @@ RSpec.describe Librum::Iam::Authentication::Passwords::Update do
         password   = BCrypt::Password.new(credential.encrypted_password)
 
         expect(password).to be == new_password
+      end
+
+      it 'should return the created password credential' do
+        result =
+          command.call(new_password: new_password, old_password: old_password)
+        credential = Librum::Iam::PasswordCredential.order(:created_at).last
+
+        expect(result.value).to be == credential
       end
     end
   end

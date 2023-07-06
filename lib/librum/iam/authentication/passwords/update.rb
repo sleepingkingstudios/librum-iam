@@ -101,8 +101,6 @@ module Librum::Iam::Authentication::Passwords
         step { deactivate_credential(credential: credential) }
 
         step { create_credential(password: new_password) }
-
-        nil
       end
     end
 

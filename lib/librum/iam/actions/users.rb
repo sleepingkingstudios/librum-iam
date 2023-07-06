@@ -3,6 +3,6 @@
 require 'librum/iam/actions'
 
 module Librum::Iam::Actions
-  # Namespace for session actions.
-  module Sessions; end
+  # Namespace for user actions.
+  module Users; end
 end

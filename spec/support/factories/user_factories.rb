@@ -8,9 +8,9 @@ FactoryBot.define do
       sequence(:user_index) { |index| index }
     end
 
-    email    { "user.#{user_index}@example.com" }
     username { "User #{user_index}" }
-    slug     { "user-#{user_index}" }
+    email    { "#{username.underscore.tr(' ', '.')}@example.com" }
+    slug     { username.tr(' ', '_').underscore.tr('_', '-') }
     role     { Librum::Iam::User::Roles::USER }
 
     trait :admin do

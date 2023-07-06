@@ -37,15 +37,8 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
       Librum::Iam::Authentication::Errors::InvalidLogin.new
     end
     let(:params) { {} }
-    let(:native_session) do
-      instance_double(ActionDispatch::Request::Session, '[]=': nil)
-    end
     let(:request) do
-      instance_double(
-        Cuprum::Rails::Request,
-        native_session: native_session,
-        params:         params
-      )
+      instance_double(Cuprum::Rails::Request, params: params)
     end
     let(:contract) do
       constraint = Stannum::Constraints::Presence.new(message: "can't be blank")
@@ -75,12 +68,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
           .to be_a_failing_result
           .with_error(expected_error)
       end
-
-      it 'should not update the session' do
-        action.call(request: request)
-
-        expect(native_session).not_to have_received(:[]=)
-      end
     end
 
     describe 'with a password' do
@@ -95,12 +82,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         expect(action.call(request: request))
           .to be_a_failing_result
           .with_error(expected_error)
-      end
-
-      it 'should not update the session' do
-        action.call(request: request)
-
-        expect(native_session).not_to have_received(:[]=)
       end
     end
 
@@ -117,12 +98,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
           .to be_a_failing_result
           .with_error(expected_error)
       end
-
-      it 'should not update the session' do
-        action.call(request: request)
-
-        expect(native_session).not_to have_received(:[]=)
-      end
     end
 
     describe 'with an invalid username and password' do
@@ -134,12 +109,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         expect(action.call(request: request))
           .to be_a_failing_result
           .with_error(expected_error)
-      end
-
-      it 'should not update the session' do
-        action.call(request: request)
-
-        expect(native_session).not_to have_received(:[]=)
       end
     end
 
@@ -153,12 +122,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         expect(action.call(request: request))
           .to be_a_failing_result
           .with_error(expected_error)
-      end
-
-      it 'should not update the session' do
-        action.call(request: request)
-
-        expect(native_session).not_to have_received(:[]=)
       end
 
       context 'when an expired password credential exists' do
@@ -181,12 +144,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
             .to be_a_failing_result
             .with_error(expected_error)
         end
-
-        it 'should not update the session' do
-          action.call(request: request)
-
-          expect(native_session).not_to have_received(:[]=)
-        end
       end
 
       context 'when a non-matching password credential exists' do
@@ -204,12 +161,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
           expect(action.call(request: request))
             .to be_a_failing_result
             .with_error(expected_error)
-        end
-
-        it 'should not update the session' do
-          action.call(request: request)
-
-          expect(native_session).not_to have_received(:[]=)
         end
       end
 
@@ -236,17 +187,9 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         let(:current_time) { Time.current }
 
         def encoded_token
-          encoded = nil
+          result = action.call(request: request)
 
-          allow(native_session)
-            .to receive(:[]=)
-            .with('auth_token', an_instance_of(String)) do |_, token|
-              encoded = token
-            end
-
-          action.call(request: request)
-
-          encoded
+          result.value['token']
         end
 
         before(:example) do
@@ -258,15 +201,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         it 'should return a passing result' do
           expect(action.call(request: request))
             .to be_a_passing_result
-            .with_value(deep_match({}))
-        end
-
-        it 'should update the session', :aggregate_failures do
-          action.call(request: request)
-
-          expect(native_session)
-            .to have_received(:[]=)
-            .with('auth_token', an_instance_of(String))
+            .with_value(deep_match({ 'token' => an_instance_of(String) }))
         end
 
         it { expect(payload['exp']).to be == (current_time + 1.day).to_i }
