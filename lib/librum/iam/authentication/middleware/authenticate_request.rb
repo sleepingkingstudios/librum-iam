@@ -37,12 +37,19 @@ module Librum::Iam::Authentication::Middleware
         .call(request)
     end
 
+    def build_request(request:, session:)
+      Librum::Iam::Request.new(
+        context: request.context,
+        session: session,
+        **request.properties
+      )
+    end
+
     def process(next_command, request:)
       return super if skip_authentication?(request)
 
       session = step { authenticate_request(request) }
-      request =
-        Librum::Iam::Request.new(session: session, **request.properties)
+      request = build_request(request: request, session: session)
 
       next_command.call(request: request)
     end
