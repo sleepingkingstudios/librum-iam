@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/core/resources/base_resource'
 require 'librum/core/rspec/contracts/controller_contracts'
 require 'librum/core/rspec/contracts/responders/html_contracts'
 
