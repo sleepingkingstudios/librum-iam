@@ -23,37 +23,45 @@ RSpec.describe Librum::Iam::View::Components::Users::Block, type: :component do
     let(:rendered) { render_inline(block) }
     let(:snapshot) do
       <<~HTML
-        <div class="content">
-          <div class="block">
-            <p class="has-text-weight-semibold mb-1">Username</p>
+        <div class="block content">
+          <div class="columns mb-0">
+            <div class="column is-2 has-text-weight-semibold mb-1">
+              Username
+            </div>
 
-            <p>
+            <div class="column">
               Custom User
-            </p>
+            </div>
           </div>
 
-          <div class="block">
-            <p class="has-text-weight-semibold mb-1">Slug</p>
+          <div class="columns mb-0">
+            <div class="column is-2 has-text-weight-semibold mb-1">
+              Slug
+            </div>
 
-            <p>
+            <div class="column">
               custom-user
-            </p>
+            </div>
           </div>
 
-          <div class="block">
-            <p class="has-text-weight-semibold mb-1">Email</p>
+          <div class="columns mb-0">
+            <div class="column is-2 has-text-weight-semibold mb-1">
+              Email
+            </div>
 
-            <p>
+            <div class="column">
               custom.user@example.com
-            </p>
+            </div>
           </div>
 
-          <div class="block">
-            <p class="has-text-weight-semibold mb-1">Role</p>
+          <div class="columns mb-0">
+            <div class="column is-2 has-text-weight-semibold mb-1">
+              Role
+            </div>
 
-            <p>
+            <div class="column">
               User
-            </p>
+            </div>
           </div>
         </div>
       HTML

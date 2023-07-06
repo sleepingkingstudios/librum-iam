@@ -1,0 +1,45 @@
+<%=
+  form_with(
+    url:    Librum::Iam::Engine.config.authentication_user_password_path,
+    method: :patch) \
+  do |form|
+%>
+  <%=
+    render(
+      Librum::Core::View::Components::FormField.new(
+        'old_password',
+        errors: errors,
+        type:   :password
+      )
+    )
+  %>
+
+  <%=
+    render(
+      Librum::Core::View::Components::FormField.new(
+        'new_password',
+        errors: errors,
+        type:   :password
+      )
+    )
+  %>
+
+  <%=
+    render(
+      Librum::Core::View::Components::FormField.new(
+        'confirm_password',
+        errors: errors,
+        type:   :password
+      )
+    )
+  %>
+
+  <%=
+    render(
+      Librum::Core::View::Components::FormButtons.new(
+        cancel_url:   Librum::Iam::Engine.config.authentication_user_path,
+        submit_label: 'Update Password'
+      )
+    )
+  %>
+<% end %>

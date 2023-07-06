@@ -15,4 +15,8 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = false
 
   config.factory_bot.definition_file_paths = ['spec/support/factories']
+
+  # Configure engine routes.
+  config.authentication_user_path          = '/authentication/user'
+  config.authentication_user_password_path = '/authentication/user/password'
 end
