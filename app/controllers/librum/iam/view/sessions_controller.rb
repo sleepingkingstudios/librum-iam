@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'librum/core/resources/base_resource'
 require 'librum/core/responders/html/view_responder'
 require 'librum/core/view/layouts/page'
 require 'librum/iam/actions/sessions/create'
