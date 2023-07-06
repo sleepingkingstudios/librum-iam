@@ -41,6 +41,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
       instance_double(
         Cuprum::Rails::Request,
         action_name: 'launch',
+        context:     Object.new.freeze,
         properties:  { action_name: 'launch' }
       )
     end
@@ -48,6 +49,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
       be_a(Librum::Iam::Request).and(
         have_attributes(
           action_name: 'launch',
+          context:     request.context,
           session:     session
         )
       )

@@ -33,7 +33,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
     let(:mock_result)  { Cuprum::Result.new(value: session) }
     let(:mock_strategy) do
       instance_double(
-        Librum::Iam::Authentication::Strategies::RequestToken,
+        Librum::Iam::Authentication::Strategies::SessionToken,
         call: mock_result
       )
     end
@@ -48,6 +48,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       instance_double(
         Cuprum::Rails::Request,
         action_name:    'launch',
+        context:        Object.new.freeze,
         properties:     { action_name: 'launch' },
         native_session: native_session
       )
@@ -56,6 +57,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       be_a(Librum::Iam::Request).and(
         have_attributes(
           action_name: 'launch',
+          context:     request.context,
           session:     session
         )
       )
