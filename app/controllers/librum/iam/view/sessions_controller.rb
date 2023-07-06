@@ -44,11 +44,12 @@ module Librum::Iam::View
     end
 
     def self.resource
-      Librum::Core::Resources::BaseResource.new(
-        resource_name:       'sessions',
-        skip_authentication: %i[create destroy],
-        singular:            true
-      )
+      @resource ||=
+        Librum::Core::Resources::BaseResource.new(
+          resource_name:       'sessions',
+          skip_authentication: %i[create destroy],
+          singular:            true
+        )
     end
 
     responder :html, Librum::Iam::View::SessionsController::Responder

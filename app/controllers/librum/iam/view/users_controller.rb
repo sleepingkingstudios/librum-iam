@@ -10,12 +10,13 @@ module Librum::Iam::View
   # Controller for managing the current user.
   class UsersController < Librum::Core::ViewController
     def self.resource
-      Librum::Core::Resources::ViewResource.new(
-        block_component: Librum::Iam::View::Components::Users::Block,
-        resource_class:  Librum::Iam::User,
-        resource_name:   'user',
-        singular:        true
-      )
+      @resource ||=
+        Librum::Core::Resources::ViewResource.new(
+          block_component: Librum::Iam::View::Components::Users::Block,
+          resource_class:  Librum::Iam::User,
+          resource_name:   'user',
+          singular:        true
+        )
     end
 
     responder :html, Librum::Core::Responders::Html::ResourceResponder

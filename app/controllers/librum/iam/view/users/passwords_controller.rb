@@ -13,13 +13,14 @@ module Librum::Iam::View::Users
     def self.resource
       base_path = Librum::Iam::Engine.config.authentication_user_password_path
 
-      Librum::Core::Resources::ViewResource.new(
-        base_path:      base_path,
-        form_component: Librum::Iam::View::Components::Users::Passwords::Form,
-        resource_class: Librum::Iam::PasswordCredential,
-        resource_name:  'password',
-        singular:       true
-      )
+      @resource ||=
+        Librum::Core::Resources::ViewResource.new(
+          base_path:      base_path,
+          form_component: Librum::Iam::View::Components::Users::Passwords::Form,
+          resource_class: Librum::Iam::PasswordCredential,
+          resource_name:  'password',
+          singular:       true
+        )
     end
 
     responder :html, Librum::Core::Responders::Html::ResourceResponder
