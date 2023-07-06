@@ -16,13 +16,12 @@ RSpec.describe Librum::Iam::View::SessionsController do
     end
 
     let(:action_name) { 'process' }
-    let(:resource)    { described_class.resource }
     let(:constructor_options) do
       {
-        action_name:     action_name,
-        controller_name: 'Authentication::SessionsController',
-        member_action:   false,
-        resource:        resource
+        action_name:   action_name,
+        controller:    controller,
+        member_action: false,
+        request:       Cuprum::Rails::Request.new
       }
     end
 
