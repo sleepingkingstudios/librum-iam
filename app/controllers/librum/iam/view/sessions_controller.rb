@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/actions/sessions/create'
-require 'librum/iam/authentication/errors/invalid_login'
-
 module Librum::Iam::View
   # Controller for managing authentication sessions.
   class SessionsController < Librum::Core::ViewController

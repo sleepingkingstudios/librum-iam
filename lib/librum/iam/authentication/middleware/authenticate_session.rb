@@ -2,11 +2,6 @@
 
 require 'cuprum/middleware'
 
-require 'librum/iam/authentication/middleware'
-require 'librum/iam/authentication/strategies/session_token'
-require 'librum/iam/request'
-require 'librum/iam/resource'
-
 module Librum::Iam::Authentication::Middleware
   # Middleware for authenticating the current user from the session.
   class AuthenticateSession < Cuprum::Command

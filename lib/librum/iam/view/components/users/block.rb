@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/view/components/users'
-
 module Librum::Iam::View::Components::Users
   # Renders the current user.
   class Block < ViewComponent::Base

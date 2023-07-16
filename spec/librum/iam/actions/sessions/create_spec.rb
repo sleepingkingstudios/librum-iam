@@ -5,8 +5,6 @@ require 'rails_helper'
 require 'cuprum/rails/repository'
 require 'cuprum/rails/resource'
 
-require 'librum/iam/actions/sessions/create'
-
 RSpec.describe Librum::Iam::Actions::Sessions::Create do
   subject(:action) do
     described_class.new(

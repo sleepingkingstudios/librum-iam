@@ -3,12 +3,6 @@
 require 'cuprum/rails/action'
 require 'stannum/contracts/hash_contract'
 
-require 'librum/iam/actions/sessions'
-require 'librum/iam/authentication/errors/invalid_login'
-require 'librum/iam/authentication/jwt/generate'
-require 'librum/iam/authentication/passwords/find'
-require 'librum/iam/session'
-
 module Librum::Iam::Actions::Sessions
   # Action for creating an authentication session.
   class Create < Cuprum::Rails::Action

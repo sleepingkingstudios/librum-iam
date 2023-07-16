@@ -4,8 +4,6 @@ require 'rails_helper'
 
 require 'stannum'
 
-require 'librum/iam/authentication/errors/invalid_login'
-
 RSpec.describe Librum::Iam::Authentication::Errors::InvalidLogin do
   subject(:error) { described_class.new(**constructor_options) }
 

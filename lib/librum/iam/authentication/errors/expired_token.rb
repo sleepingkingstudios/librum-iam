@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/authentication/errors'
-require 'librum/iam/authentication/errors/invalid_token'
-
 module Librum::Iam::Authentication::Errors
   # Abstract error returned for an expired authentication token.
   class ExpiredToken < Librum::Iam::Authentication::Errors::InvalidToken

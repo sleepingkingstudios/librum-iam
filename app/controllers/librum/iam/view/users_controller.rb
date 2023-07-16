@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/actions/users/show'
-require 'librum/iam/view/components/users/block'
-
 module Librum::Iam::View
   # Controller for managing the current user.
   class UsersController < Librum::Core::ViewController

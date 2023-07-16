@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/view/components/authentication'
-
 module Librum::Iam::View::Components::Authentication
   # Renders the current authentication session.
   class CurrentSession < ViewComponent::Base

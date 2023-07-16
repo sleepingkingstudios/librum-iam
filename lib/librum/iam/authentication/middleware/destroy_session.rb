@@ -2,8 +2,6 @@
 
 require 'cuprum/middleware'
 
-require 'librum/iam/authentication/middleware'
-
 module Librum::Iam::Authentication::Middleware
   # Middleware for clearing the authentication session.
   class DestroySession < Cuprum::Command

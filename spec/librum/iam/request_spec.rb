@@ -2,9 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/request'
-require 'librum/iam/session'
-
 RSpec.describe Librum::Iam::Request do
   subject(:request) { described_class.new(session: session) }
 

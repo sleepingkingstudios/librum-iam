@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/view/components/users/block'
-
 RSpec.describe Librum::Iam::View::Components::Users::Block, type: :component do
   subject(:block) { described_class.new(data: data) }
 

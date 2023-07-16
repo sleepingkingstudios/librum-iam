@@ -2,8 +2,6 @@
 
 require 'rspec/sleeping_king_studios/contract'
 
-require 'librum/iam/rspec/contracts'
-
 module Librum::Iam::RSpec::Contracts
   # RSpec contracts for Credential classes.
   module CredentialContracts

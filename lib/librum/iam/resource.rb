@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam'
-
 module Librum::Iam
   # Methods for configuring controller authentication.
   module Resource

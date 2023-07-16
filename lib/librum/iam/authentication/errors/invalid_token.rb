@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/authentication/errors'
-
 module Librum::Iam::Authentication::Errors
   # Abstract error returned for an invalid authentication token.
   class InvalidToken < Librum::Core::Errors::AuthenticationError

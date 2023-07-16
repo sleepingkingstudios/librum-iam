@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/passwords/match'
-
 RSpec.describe Librum::Iam::Authentication::Passwords::Match do
   subject(:command) { described_class.new(encrypted_password) }
 

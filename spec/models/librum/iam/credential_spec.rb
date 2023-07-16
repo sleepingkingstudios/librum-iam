@@ -2,9 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/credential'
-require 'librum/iam/rspec/contracts/credential_contracts'
-
 RSpec.describe Librum::Iam::Credential, type: :model do
   include Librum::Iam::RSpec::Contracts::CredentialContracts
 

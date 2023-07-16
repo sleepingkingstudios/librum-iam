@@ -2,8 +2,6 @@
 
 require 'cuprum/rails/action'
 
-require 'librum/iam/actions/users'
-
 module Librum::Iam::Actions::Users
   # Action to show the current authenticated user.
   class Show < Cuprum::Rails::Action

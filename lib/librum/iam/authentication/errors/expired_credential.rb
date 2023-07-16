@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/authentication/errors'
-
 module Librum::Iam::Authentication::Errors
   # Error returned when parsing a token with an expired credential.
   class ExpiredCredential < Librum::Core::Errors::AuthenticationError

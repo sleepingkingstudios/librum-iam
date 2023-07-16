@@ -4,8 +4,6 @@ require 'forwardable'
 
 require 'cuprum/rails/request'
 
-require 'librum/iam'
-
 module Librum::Iam
   # A request wrapper with authenticaton session.
   class Request < Cuprum::Rails::Request

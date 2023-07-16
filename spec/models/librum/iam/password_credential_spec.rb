@@ -2,9 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/password_credential'
-require 'librum/iam/rspec/contracts/credential_contracts'
-
 RSpec.describe Librum::Iam::PasswordCredential, type: :model do
   include Librum::Iam::RSpec::Contracts::CredentialContracts
 

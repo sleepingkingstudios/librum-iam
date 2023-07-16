@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/authentication/errors'
-
 module Librum::Iam::Authentication::Errors
   # Error returned when an authentication token is not provided.
   class MissingToken < Librum::Core::Errors::AuthenticationError

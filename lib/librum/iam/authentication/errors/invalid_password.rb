@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/authentication/errors'
-
 module Librum::Iam::Authentication::Errors
   # Error returned when a password does not match the encrypted value.
   class InvalidPassword < Librum::Core::Errors::AuthenticationError

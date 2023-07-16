@@ -4,8 +4,6 @@ require 'rails_helper'
 
 require 'cuprum/rails/repository'
 
-require 'librum/iam/authentication/passwords/find'
-
 RSpec.describe Librum::Iam::Authentication::Passwords::Find do
   subject(:command) { described_class.new(repository: repository) }
 

@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/errors/malformed_token'
-
 RSpec.describe Librum::Iam::Authentication::Errors::MalformedToken do
   subject(:error) { described_class.new(**constructor_options) }
 

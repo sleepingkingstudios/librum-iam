@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/passwords/generate'
-
 RSpec.describe Librum::Iam::Authentication::Passwords::Generate do
   subject(:command) { described_class.new }
 
