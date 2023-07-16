@@ -4,8 +4,6 @@ require 'rails_helper'
 
 require 'stannum/errors'
 
-require 'librum/iam/view/components/users/passwords/form'
-
 RSpec.describe Librum::Iam::View::Components::Users::Passwords::Form, \
   type: :component \
 do

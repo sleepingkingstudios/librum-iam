@@ -3,9 +3,6 @@
 require 'bcrypt'
 require 'cuprum'
 
-require 'librum/iam/authentication/errors/invalid_password'
-require 'librum/iam/authentication/passwords'
-
 module Librum::Iam::Authentication::Passwords
   # Matches the given value against an encrypted password.
   class Match < Cuprum::Command

@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/middleware/authenticate_session'
-
 RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
   subject(:middleware) do
     described_class.new(repository: repository, resource: resource)

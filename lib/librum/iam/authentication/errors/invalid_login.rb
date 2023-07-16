@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/errors/authentication_error'
-
-require 'librum/iam/authentication/errors'
-
 module Librum::Iam::Authentication::Errors
   # Error returned for a failed username+password login.
   class InvalidLogin < Librum::Core::Errors::AuthenticationError

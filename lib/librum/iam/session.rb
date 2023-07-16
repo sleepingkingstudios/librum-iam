@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam'
-
 module Librum::Iam
   # Encapsulates the current user(s) and the credential used to authenticate.
   class Session

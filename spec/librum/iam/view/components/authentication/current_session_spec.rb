@@ -2,9 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/session'
-require 'librum/iam/view/components/authentication/current_session'
-
 RSpec.describe Librum::Iam::View::Components::Authentication::CurrentSession,
   type: :component \
 do

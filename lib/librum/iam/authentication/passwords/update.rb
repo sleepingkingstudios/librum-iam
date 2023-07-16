@@ -5,11 +5,6 @@ require 'cuprum/collections/commands/create'
 require 'cuprum/collections/commands/find_one_matching'
 require 'cuprum/collections/commands/update'
 
-require 'librum/iam/authentication/errors/missing_password'
-require 'librum/iam/authentication/passwords'
-require 'librum/iam/authentication/passwords/generate'
-require 'librum/iam/authentication/passwords/match'
-
 module Librum::Iam::Authentication::Passwords
   # Updates the password credential for the current user.
   class Update < Cuprum::Command

@@ -2,8 +2,6 @@
 
 require 'cuprum'
 
-require 'librum/iam/authentication/passwords'
-
 module Librum::Iam::Authentication::Passwords
   # Generates a BCrypt hash of the given raw password.
   class Generate < Cuprum::Command

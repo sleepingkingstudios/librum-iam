@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/strategies/token'
-
 RSpec.describe Librum::Iam::Authentication::Strategies::Token do
   subject(:strategy) { described_class.new(repository: repository) }
 

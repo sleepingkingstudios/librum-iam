@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/models/data_properties'
-
 module Librum::Iam
   # An identifier used to authenticate a user.
   class Credential < Librum::Iam::ApplicationRecord

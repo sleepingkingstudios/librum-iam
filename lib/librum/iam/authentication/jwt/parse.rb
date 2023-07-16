@@ -3,11 +3,6 @@
 require 'cuprum'
 require 'jwt'
 
-require 'librum/iam/authentication/errors/expired_token'
-require 'librum/iam/authentication/errors/invalid_token'
-require 'librum/iam/authentication/errors/malformed_token'
-require 'librum/iam/authentication/jwt'
-
 module Librum::Iam::Authentication::Jwt
   # Generates a session from an encoded JWT.
   class Parse < Cuprum::Command

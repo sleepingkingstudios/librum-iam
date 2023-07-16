@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/errors/invalid_password'
-
 RSpec.describe Librum::Iam::Authentication::Errors::InvalidPassword do
   subject(:error) { described_class.new(**constructor_options) }
 

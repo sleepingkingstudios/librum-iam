@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/view/pages/login_page'
-
 RSpec.describe Librum::Iam::View::Pages::LoginPage, type: :component do
   subject(:page) { described_class.new(result) }
 

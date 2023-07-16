@@ -2,9 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/core/rspec/contracts/controller_contracts'
-require 'librum/core/rspec/contracts/responders/html_contracts'
-
 RSpec.describe Librum::Iam::View::SessionsController do
   include Librum::Core::RSpec::Contracts::ControllerContracts
 

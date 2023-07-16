@@ -3,10 +3,6 @@
 require 'cuprum'
 require 'cuprum/collections/commands/find_one_matching'
 
-require 'librum/iam/authentication/errors/invalid_login'
-require 'librum/iam/authentication/passwords'
-require 'librum/iam/authentication/passwords/match'
-
 module Librum::Iam::Authentication::Passwords
   # Finds the password credential for the requested user and matches passwords.
   class Find < Cuprum::Command

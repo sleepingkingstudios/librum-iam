@@ -2,9 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/jwt/generate'
-require 'librum/iam/session'
-
 RSpec.describe Librum::Iam::Authentication::Jwt::Generate do
   subject(:command) { described_class.new }
 

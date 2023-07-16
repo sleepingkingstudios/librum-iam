@@ -2,14 +2,6 @@
 
 require 'cuprum'
 
-require 'librum/iam/authentication/strategies'
-require 'librum/iam/authentication/errors/expired_credential'
-require 'librum/iam/authentication/errors/invalid_token'
-require 'librum/iam/authentication/errors/missing_credential'
-require 'librum/iam/authentication/errors/missing_token'
-require 'librum/iam/authentication/jwt/parse'
-require 'librum/iam/session'
-
 module Librum::Iam::Authentication::Strategies
   # Authentication strategy for parsing an encoded JWT.
   class Token < Cuprum::Command

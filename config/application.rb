@@ -21,6 +21,10 @@ module Librum
       config.load_defaults 7.0
 
       config.eager_load = false
+
+      # Configure autoload paths.
+      config.autoload_paths << "#{root}/lib"
+      config.autoload_paths << "#{Librum::Core::Engine.root}/lib"
     end
   end
 end

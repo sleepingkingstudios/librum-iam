@@ -2,8 +2,6 @@
 
 require 'cuprum/middleware'
 
-require 'librum/iam/authentication/middleware'
-
 module Librum::Iam::Authentication::Middleware
   # Middleware for updating the session with the current user.
   class RegenerateSession < Cuprum::Command

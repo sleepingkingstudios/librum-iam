@@ -7,12 +7,6 @@ require 'stannum/contracts/indifferent_hash_contract'
 require 'stannum/constraints/presence'
 require 'stannum/constraints/properties/match_property'
 
-require 'librum/core/errors/authentication_failed'
-
-require 'librum/iam/actions/users/passwords'
-require 'librum/iam/authentication/jwt/generate'
-require 'librum/iam/authentication/passwords/update'
-
 module Librum::Iam::Actions::Users::Passwords
   # Action to update the password for the current authenticated user.
   class Update < Cuprum::Rails::Action

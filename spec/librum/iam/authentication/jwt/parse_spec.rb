@@ -2,9 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/jwt/generate'
-require 'librum/iam/authentication/jwt/parse'
-
 RSpec.describe Librum::Iam::Authentication::Jwt::Parse do
   subject(:command) { described_class.new }
 

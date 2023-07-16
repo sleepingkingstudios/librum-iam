@@ -2,10 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/actions/users/passwords/update'
-require 'librum/iam/request'
-require 'librum/iam/session'
-
 RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
   subject(:action) do
     described_class.new(repository: repository, resource: resource)

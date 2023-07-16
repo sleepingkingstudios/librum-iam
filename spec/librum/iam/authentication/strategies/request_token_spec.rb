@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'librum/iam/authentication/strategies/request_token'
-require 'librum/iam/authentication/strategies/token'
+require 'rails_helper'
 
 RSpec.describe Librum::Iam::Authentication::Strategies::RequestToken do
   subject(:strategy) { described_class.new(repository: repository) }

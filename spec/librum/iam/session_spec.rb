@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/session'
-
 RSpec.describe Librum::Iam::Session do
   subject(:session) { described_class.new(**constructor_options) }
 

@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/view/components/sessions/form'
-
 RSpec.describe Librum::Iam::View::Components::Sessions::Form,
   type: :component \
 do

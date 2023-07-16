@@ -15,7 +15,6 @@ end
 
 require 'rspec/rails'
 require 'cuprum/rails/rspec/matchers'
-require 'librum/core/rspec/component_helpers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Checks for pending migrations and applies them before tests are run.

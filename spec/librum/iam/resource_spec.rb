@@ -4,8 +4,6 @@ require 'rails_helper'
 
 require 'cuprum/rails/resource'
 
-require 'librum/iam/resource'
-
 RSpec.describe Librum::Iam::Resource do
   subject(:resource) { described_class.new(**constructor_options) }
 

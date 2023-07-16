@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/errors/expired_credential'
-
 RSpec.describe Librum::Iam::Authentication::Errors::ExpiredCredential do
   subject(:error) { described_class.new(**constructor_options) }
 

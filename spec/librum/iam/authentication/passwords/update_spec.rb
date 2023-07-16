@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/passwords/update'
-
 RSpec.describe Librum::Iam::Authentication::Passwords::Update do
   subject(:command) { described_class.new(repository: repository, user: user) }
 

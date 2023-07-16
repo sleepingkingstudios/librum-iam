@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/middleware/regenerate_session'
-
 RSpec.describe Librum::Iam::Authentication::Middleware::RegenerateSession do
   subject(:middleware) { described_class.new }
 

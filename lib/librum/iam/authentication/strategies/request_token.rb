@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/iam/authentication/strategies'
-require 'librum/iam/authentication/strategies/token'
-
 module Librum::Iam::Authentication::Strategies
   # Authentication strategy for parsing an encoded JWT from a request.
   class RequestToken < Librum::Iam::Authentication::Strategies::Token

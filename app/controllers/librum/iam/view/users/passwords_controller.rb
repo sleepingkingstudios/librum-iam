@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/actions/view/render_page'
-require 'librum/core/resources/view_resource'
-require 'librum/core/responders/html/resource_responder'
-
-require 'librum/iam/actions/users/passwords/update'
-require 'librum/iam/view/components/users/passwords/form'
-
 module Librum::Iam::View::Users
   # Controller for managing the current user's password.
   class PasswordsController < Librum::Core::ViewController

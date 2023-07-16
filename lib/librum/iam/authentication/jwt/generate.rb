@@ -3,8 +3,6 @@
 require 'cuprum'
 require 'jwt'
 
-require 'librum/iam/authentication/jwt'
-
 module Librum::Iam::Authentication::Jwt
   # Generates a JWT from an authorization session.
   class Generate < Cuprum::Command

@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/middleware/destroy_session'
-
 RSpec.describe Librum::Iam::Authentication::Middleware::DestroySession do
   subject(:middleware) { described_class.new }
 

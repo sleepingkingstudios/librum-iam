@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/errors/missing_token'
-
 RSpec.describe Librum::Iam::Authentication::Errors::MissingToken do
   subject(:error) { described_class.new(**constructor_options) }
 

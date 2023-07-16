@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-require 'librum/iam/authentication/errors/expired_token'
-
 RSpec.describe Librum::Iam::Authentication::Errors::ExpiredToken do
   subject(:error) { described_class.new(**constructor_options) }
 
