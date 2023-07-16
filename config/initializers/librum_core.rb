@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/resources/base_resource'
-
 require 'librum/iam/resource'
 
 Librum::Core::Engine.instance_exec do

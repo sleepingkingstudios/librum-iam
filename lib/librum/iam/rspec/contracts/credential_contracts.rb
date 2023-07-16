@@ -2,9 +2,6 @@
 
 require 'rspec/sleeping_king_studios/contract'
 
-require 'librum/core/rspec/contracts/model_contracts'
-require 'librum/core/rspec/contracts/models/data_properties_contracts'
-
 require 'librum/iam/rspec/contracts'
 
 module Librum::Iam::RSpec::Contracts

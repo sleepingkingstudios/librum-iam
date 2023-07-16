@@ -2,8 +2,6 @@
 
 require 'cuprum/rails/action'
 
-require 'librum/core/errors/authentication_failed'
-
 require 'librum/iam/actions/users'
 
 module Librum::Iam::Actions::Users

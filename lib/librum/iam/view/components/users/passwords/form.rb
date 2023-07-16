@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'librum/core/view/components/form_buttons'
-require 'librum/core/view/components/form_field'
-
 require 'librum/iam/view/components/users/passwords'
 
 module Librum::Iam::View::Components::Users::Passwords
