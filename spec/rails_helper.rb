@@ -28,6 +28,8 @@ rescue ActiveRecord::PendingMigrationError => e
   # :nocov:
 end
 
+Librum::Iam::RSpec::Factories.define_factories
+
 RSpec.configure do |config|
   config.include Cuprum::Rails::RSpec::Matchers
   config.include Librum::Core::RSpec::ComponentHelpers, type: :component
