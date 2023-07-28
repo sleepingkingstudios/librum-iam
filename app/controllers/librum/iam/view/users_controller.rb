@@ -6,6 +6,7 @@ module Librum::Iam::View
     def self.resource
       @resource ||=
         Librum::Core::Resources::ViewResource.new(
+          actions:         %w[show],
           block_component: Librum::Iam::View::Components::Users::Block,
           resource_class:  Librum::Iam::User,
           resource_name:   'user',
