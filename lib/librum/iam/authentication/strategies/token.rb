@@ -39,7 +39,7 @@ module Librum::Iam::Authentication::Strategies
     end
 
     def credentials_collection
-      repository.find_or_create(record_class: Librum::Iam::Credential)
+      repository.find_or_create(entity_class: Librum::Iam::Credential)
     end
 
     def find_credential(credential_id:)

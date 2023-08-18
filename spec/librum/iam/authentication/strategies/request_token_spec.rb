@@ -31,7 +31,7 @@ RSpec.describe Librum::Iam::Authentication::Strategies::RequestToken do
     Cuprum::Rails::Repository
       .new
       .tap do |repo|
-        repo.find_or_create(record_class: Librum::Iam::Credential)
+        repo.find_or_create(entity_class: Librum::Iam::Credential)
       end
   end
   let(:headers) { {} }
