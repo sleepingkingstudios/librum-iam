@@ -9,12 +9,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
 
   let(:repository) { Cuprum::Rails::Repository.new }
   let(:resource) do
-    Cuprum::Rails::Resource.new(
-      collection:     repository.find_or_create(
-        record_class: Librum::Iam::Credential
-      ),
-      resource_class: Librum::Iam::Credential
-    )
+    Cuprum::Rails::Resource.new(resource_class: Librum::Iam::Credential)
   end
 
   describe '.new' do

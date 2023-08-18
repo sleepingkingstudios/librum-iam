@@ -15,8 +15,8 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
 
   let(:repository) do
     Cuprum::Rails::Repository.new.tap do |repository|
-      repository.find_or_create(record_class: Librum::Iam::Credential)
-      repository.find_or_create(record_class: Librum::Iam::User)
+      repository.find_or_create(entity_class: Librum::Iam::Credential)
+      repository.find_or_create(entity_class: Librum::Iam::User)
     end
   end
   let(:resource) { Cuprum::Rails::Resource.new(resource_name: 'sessions') }

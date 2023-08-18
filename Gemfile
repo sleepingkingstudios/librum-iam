@@ -8,6 +8,9 @@ gemspec
 gem 'cuprum',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum'
+gem 'cuprum-collections',
+  branch: 'main',
+  git:    'https://github.com/sleepingkingstudios/cuprum-collections'
 gem 'cuprum-rails',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-rails'

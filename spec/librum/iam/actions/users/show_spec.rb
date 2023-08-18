@@ -9,12 +9,7 @@ RSpec.describe Librum::Iam::Actions::Users::Show do
 
   let(:repository) { Cuprum::Rails::Repository.new }
   let(:resource) do
-    Cuprum::Rails::Resource.new(
-      collection:     repository.find_or_create(
-        record_class: Librum::Iam::User
-      ),
-      resource_class: Librum::Iam::User
-    )
+    Cuprum::Rails::Resource.new(resource_class: Librum::Iam::User)
   end
 
   describe '.new' do
