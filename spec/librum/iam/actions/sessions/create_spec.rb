@@ -2,16 +2,13 @@
 
 require 'rails_helper'
 
+require 'jwt'
+
 require 'cuprum/rails/repository'
 require 'cuprum/rails/resource'
 
 RSpec.describe Librum::Iam::Actions::Sessions::Create do
-  subject(:action) do
-    described_class.new(
-      repository: repository,
-      resource:   resource
-    )
-  end
+  subject(:action) { described_class.new }
 
   let(:repository) do
     Cuprum::Rails::Repository.new.tap do |repository|
@@ -20,15 +17,6 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
     end
   end
   let(:resource) { Cuprum::Rails::Resource.new(resource_name: 'sessions') }
-
-  describe '.new' do
-    it 'should define the constructor' do
-      expect(described_class)
-        .to be_constructible
-        .with(0).arguments
-        .and_keywords(:repository, :resource)
-    end
-  end
 
   describe '#call' do
     let(:expected_error) do
@@ -47,11 +35,18 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
       end
     end
 
+    def call_action
+      action.call(
+        repository: repository,
+        request:    request
+      )
+    end
+
     it 'should define the method' do
       expect(action)
         .to be_callable
         .with(0).arguments
-        .and_keywords(:request)
+        .and_keywords(:request, :repository)
     end
 
     describe 'with empty params' do
@@ -62,7 +57,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -77,7 +72,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -92,7 +87,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -104,7 +99,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -117,7 +112,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
       before(:example) { user.save! }
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -138,7 +133,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         before(:example) { credential.save! }
 
         it 'should return a failing result' do
-          expect(action.call(request: request))
+          expect(call_action)
             .to be_a_failing_result
             .with_error(expected_error)
         end
@@ -156,7 +151,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         before(:example) { credential.save! }
 
         it 'should return a failing result' do
-          expect(action.call(request: request))
+          expect(call_action)
             .to be_a_failing_result
             .with_error(expected_error)
         end
@@ -185,7 +180,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         let(:current_time) { Time.current }
 
         def encoded_token
-          result = action.call(request: request)
+          result = call_action
 
           result.value['token']
         end
@@ -197,7 +192,7 @@ RSpec.describe Librum::Iam::Actions::Sessions::Create do
         end
 
         it 'should return a passing result' do
-          expect(action.call(request: request))
+          expect(call_action)
             .to be_a_passing_result
             .with_value(deep_match({ 'token' => an_instance_of(String) }))
         end

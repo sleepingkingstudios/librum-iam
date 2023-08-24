@@ -18,7 +18,7 @@ module Librum::Iam::View::Users
 
     responder :html, Librum::Core::Responders::Html::ResourceResponder
 
-    action :edit,   Librum::Core::Actions::View::RenderPage
+    action :edit,   Cuprum::Rails::Action
 
     action :update, Librum::Iam::Actions::Users::Passwords::Update
   end

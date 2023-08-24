@@ -21,9 +21,9 @@ module Librum::Iam::Authentication::Middleware
       request.native_session
     end
 
-    def process(next_command, request:)
+    def process(next_command, request:, **rest)
       @request = request
-      result   = next_command.call(request: request)
+      result   = next_command.call(request: request, **rest)
 
       return result unless result.success?
 

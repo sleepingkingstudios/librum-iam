@@ -43,7 +43,7 @@ module Librum::Iam::Actions::Users::Passwords
       Librum::Iam::Authentication::Jwt::Generate.new.call(session)
     end
 
-    def process(request:)
+    def process(request:, **)
       super
 
       step { require_session }

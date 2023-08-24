@@ -7,24 +7,11 @@ module Librum::Iam::Authentication::Middleware
   class AuthenticateSession < Cuprum::Command
     include Cuprum::Middleware
 
-    # @param repository [Cuprum::Collections::Repository] The repository used to
-    #   query the user and credential.
-    # @param resource [Cuprum::Rails::Resource] The controller resource.
-    def initialize(repository:, resource:)
-      super()
-
-      @repository = repository
-      @resource   = resource
-    end
-
-    # @return [Cuprum::Collections::Repository] the repository used to query the
-    #   user and credential.
-    attr_reader :repository
-
-    # @return [Cuprum::Rails::Resource] the controller resource.
-    attr_reader :resource
-
     private
+
+    attr_reader \
+      :repository,
+      :resource
 
     def authenticate_request(request)
       Librum::Iam::Authentication::Strategies::SessionToken
@@ -51,12 +38,20 @@ module Librum::Iam::Authentication::Middleware
       )
     end
 
-    def process(next_command, request:)
+    def process(next_command, repository:, request:, resource:, **rest) # rubocop:disable Metrics/MethodLength
+      @repository = repository
+      @resource   = resource
+
       return super if skip_authentication?(request)
 
       session = step { authenticate_request(request) }
       request = build_request(request: request, session: session)
-      result  = next_command.call(request: request)
+      result  = next_command.call(
+        repository: repository,
+        request:    request,
+        resource:   resource,
+        **rest
+      )
 
       merge_result(result: result, session: session)
     end
