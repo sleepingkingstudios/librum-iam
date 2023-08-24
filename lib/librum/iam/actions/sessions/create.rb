@@ -26,7 +26,7 @@ module Librum::Iam::Actions::Sessions
         .call(username: params['username'], password: params['password'])
     end
 
-    def process(request:)
+    def process(request:, **rest)
       super
 
       step { validate_parameters }

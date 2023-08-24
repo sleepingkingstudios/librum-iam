@@ -3,9 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
-  subject(:middleware) do
-    described_class.new(repository: repository, resource: resource)
-  end
+  subject(:middleware) { described_class.new }
 
   let(:repository) { Cuprum::Rails::Repository.new }
   let(:resource)   { Spec::Resource.new(resource_name: 'rockets') }
@@ -15,15 +13,10 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
   end
 
   describe '.new' do
-    it 'should define the constructor' do
-      expect(described_class)
-        .to be_constructible
-        .with(0).arguments
-        .and_keywords(:repository, :resource)
-    end
+    it { expect(described_class).to be_constructible.with(0).arguments }
   end
 
-  describe '#call' do
+  describe '#call' do # rubocop:disable RSpec/MultipleMemoizedHelpers
     let(:result)       { Cuprum::Result.new(value: { 'ok' => true }) }
     let(:next_command) { instance_double(Cuprum::Command, call: result) }
     let(:credential)   { FactoryBot.build(:generic_credential) }
@@ -52,6 +45,17 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
         )
       )
     end
+    let(:options) { { custom_option: 'custom value' } }
+
+    def call_action
+      middleware.call(
+        next_command,
+        repository: repository,
+        request:    request,
+        resource:   resource,
+        **options
+      )
+    end
 
     before(:example) do
       allow(Librum::Iam::Authentication::Strategies::RequestToken)
@@ -63,27 +67,33 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
       expect(middleware)
         .to be_callable
         .with(1).arguments
-        .and_keywords(:request)
+        .and_keywords(:repository, :request, :resource)
+        .and_any_keywords
     end
 
     it 'should return a passing result' do
-      expect(middleware.call(next_command, request: request))
+      expect(call_action)
         .to be_a_passing_result
         .with_value(result.value)
     end
 
     it 'should authenticate the request' do
-      middleware.call(next_command, request: request)
+      call_action
 
       expect(mock_strategy).to have_received(:call).with(request)
     end
 
-    it 'should call the action' do
-      middleware.call(next_command, request: request)
+    it 'should call the action' do # rubocop:disable RSpec/ExampleLength
+      call_action
 
       expect(next_command)
         .to have_received(:call)
-        .with(request: expected_request)
+        .with(
+          repository: repository,
+          request:    expected_request,
+          resource:   resource,
+          **options
+        )
     end
 
     context 'when the authentication fails' do # rubocop:disable RSpec/MultipleMemoizedHelpers
@@ -91,35 +101,25 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
       let(:mock_result) { Cuprum::Result.new(error: mock_error) }
 
       it 'should return a failing result' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(mock_error)
       end
 
       it 'should authenticate the request' do
-        middleware.call(next_command, request: request)
+        call_action
 
         expect(mock_strategy).to have_received(:call).with(request)
       end
 
       it 'should not call the action' do
-        middleware.call(next_command, request: request)
+        call_action
 
         expect(next_command).not_to have_received(:call)
       end
     end
 
-    context 'when initialized with resource: a Cuprum::Rails::Resource' do
-      let(:resource) { Cuprum::Rails::Resource.new(resource_name: 'rockets') }
-
-      it 'should authenticate the request' do
-        middleware.call(next_command, request: request)
-
-        expect(mock_strategy).to have_received(:call).with(request)
-      end
-    end
-
-    context 'when the resource does not authenticate the action' do
+    context 'when the resource does not authenticate the action' do # rubocop:disable RSpec/MultipleMemoizedHelpers
       let(:resource) do
         Spec::Resource.new(
           resource_name:       'rockets',
@@ -128,23 +128,28 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
       end
 
       it 'should return a passing result' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(result.value)
       end
 
       it 'should not authenticate the request' do
-        middleware.call(next_command, request: request)
+        call_action
 
         expect(mock_strategy).not_to have_received(:call)
       end
 
-      it 'should call the action' do
-        middleware.call(next_command, request: request)
+      it 'should call the action' do # rubocop:disable RSpec/ExampleLength
+        call_action
 
         expect(next_command)
           .to have_received(:call)
-          .with(request: request)
+          .with(
+            repository: repository,
+            request:    request,
+            resource:   resource,
+            **options
+          )
       end
     end
   end

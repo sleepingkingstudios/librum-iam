@@ -3,23 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
-  subject(:action) do
-    described_class.new(repository: repository, resource: resource)
-  end
+  subject(:action) { described_class.new }
 
   let(:repository) { Cuprum::Rails::Repository.new }
-  let(:resource) do
-    Cuprum::Rails::Resource.new(resource_class: Librum::Iam::Credential)
-  end
-
-  describe '.new' do
-    it 'should define the constructor' do
-      expect(described_class)
-        .to be_constructible
-        .with(0).arguments
-        .and_keywords(:repository, :resource)
-    end
-  end
 
   describe '#call' do
     let(:user)       { FactoryBot.create(:user) }
@@ -39,6 +25,13 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       )
     end
 
+    def call_action
+      action.call(
+        repository: repository,
+        request:    request
+      )
+    end
+
     it 'should define the method' do
       expect(action).to be_callable.with(0).arguments.and_keywords(:request)
     end
@@ -50,7 +43,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -81,7 +74,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -104,7 +97,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -127,7 +120,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -150,7 +143,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -180,7 +173,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -205,7 +198,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -218,7 +211,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -235,7 +228,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -251,7 +244,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -285,13 +278,13 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a passing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(deep_match({ 'token' => an_instance_of(String) }))
       end
 
       it 'should generate a session token', :aggregate_failures do # rubocop:disable RSpec/ExampleLength
-        result        = action.call(request: request)
+        result        = call_action
         encoded_token = result.value['token']
         decoded_token = decode_token(encoded_token)
         payload       = decoded_token.first
@@ -302,7 +295,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should deactivate the old credential' do
-        expect { action.call(request: request) }
+        expect { call_action }
           .to(
             change { password_credential.reload.active? }
             .to be false
@@ -310,13 +303,13 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should create a password credential' do
-        expect { action.call(request: request) }
+        expect { call_action }
           .to change(Librum::Iam::PasswordCredential, :count)
           .by(1)
       end
 
       it 'should set the password credential attributes', :aggregate_failures do
-        action.call(request: request)
+        call_action
 
         credential = Librum::Iam::PasswordCredential.order(:created_at).last
 
@@ -326,7 +319,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should set the encrypted password' do
-        action.call(request: request)
+        call_action
 
         credential = Librum::Iam::PasswordCredential.order(:created_at).last
         password   = BCrypt::Password.new(credential.encrypted_password)
@@ -362,13 +355,13 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should return a passing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(deep_match({ 'token' => an_instance_of(String) }))
       end
 
       it 'should generate a session token', :aggregate_failures do # rubocop:disable RSpec/ExampleLength
-        result        = action.call(request: request)
+        result        = call_action
         encoded_token = result.value['token']
         decoded_token = decode_token(encoded_token)
         payload       = decoded_token.first
@@ -379,7 +372,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should deactivate the old credential' do
-        expect { action.call(request: request) }
+        expect { call_action }
           .to(
             change { password_credential.reload.active? }
             .to be false
@@ -387,13 +380,13 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should create a password credential' do
-        expect { action.call(request: request) }
+        expect { call_action }
           .to change(Librum::Iam::PasswordCredential, :count)
           .by(1)
       end
 
       it 'should set the password credential attributes', :aggregate_failures do
-        action.call(request: request)
+        call_action
 
         credential = Librum::Iam::PasswordCredential.order(:created_at).last
 
@@ -403,7 +396,7 @@ RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
       end
 
       it 'should set the encrypted password' do
-        action.call(request: request)
+        call_action
 
         credential = Librum::Iam::PasswordCredential.order(:created_at).last
         password   = BCrypt::Password.new(credential.encrypted_password)

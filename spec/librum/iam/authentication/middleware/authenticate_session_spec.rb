@@ -3,9 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
-  subject(:middleware) do
-    described_class.new(repository: repository, resource: resource)
-  end
+  subject(:middleware) { described_class.new }
 
   let(:repository) { Cuprum::Rails::Repository.new }
   let(:resource)   { Spec::Resource.new(resource_name: 'rockets') }
@@ -15,12 +13,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
   end
 
   describe '.new' do
-    it 'should define the constructor' do
-      expect(described_class)
-        .to be_constructible
-        .with(0).arguments
-        .and_keywords(:repository, :resource)
-    end
+    it { expect(described_class).to be_constructible.with(0).arguments }
   end
 
   describe '#call' do # rubocop:disable RSpec/MultipleMemoizedHelpers
@@ -60,6 +53,17 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
         )
       )
     end
+    let(:options) { { custom_option: 'custom value' } }
+
+    def call_action
+      middleware.call(
+        next_command,
+        repository: repository,
+        request:    request,
+        resource:   resource,
+        **options
+      )
+    end
 
     before(:example) do
       allow(Librum::Iam::Authentication::Strategies::SessionToken)
@@ -71,25 +75,31 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       expect(middleware)
         .to be_callable
         .with(1).arguments
-        .and_keywords(:request)
+        .and_keywords(:repository, :request, :resource)
+        .and_any_keywords
     end
 
     it 'should authenticate the request' do
-      middleware.call(next_command, request: request)
+      call_action
 
       expect(mock_strategy).to have_received(:call).with(request.native_session)
     end
 
-    it 'should call the action' do
-      middleware.call(next_command, request: request)
+    it 'should call the action' do # rubocop:disable RSpec/ExampleLength
+      call_action
 
       expect(next_command)
         .to have_received(:call)
-        .with(request: expected_request)
+        .with(
+          repository: repository,
+          request:    expected_request,
+          resource:   resource,
+          **options
+        )
     end
 
     it 'should return the result with the session metadata' do
-      expect(middleware.call(next_command, request: request))
+      expect(call_action)
         .to be_a_passing_result(Cuprum::Rails::Result)
         .with_value(result.value)
         .and_metadata({ session: session })
@@ -100,13 +110,13 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       let(:mock_result) { Cuprum::Result.new(error: mock_error) }
 
       it 'should return a failing result' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(mock_error)
       end
 
       it 'should authenticate the request' do
-        middleware.call(next_command, request: request)
+        call_action
 
         expect(mock_strategy)
           .to have_received(:call)
@@ -114,21 +124,9 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       end
 
       it 'should not call the action' do
-        middleware.call(next_command, request: request)
+        call_action
 
         expect(next_command).not_to have_received(:call)
-      end
-    end
-
-    context 'when initialized with resource: a Cuprum::Rails::Resource' do # rubocop:disable RSpec/MultipleMemoizedHelpers
-      let(:resource) { Cuprum::Rails::Resource.new(resource_name: 'rockets') }
-
-      it 'should authenticate the request' do
-        middleware.call(next_command, request: request)
-
-        expect(mock_strategy)
-          .to have_received(:call)
-          .with(request.native_session)
       end
     end
 
@@ -141,23 +139,28 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       end
 
       it 'should return a passing result' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(result.value)
       end
 
       it 'should not authenticate the request' do
-        middleware.call(next_command, request: request)
+        call_action
 
         expect(mock_strategy).not_to have_received(:call)
       end
 
-      it 'should call the action' do
-        middleware.call(next_command, request: request)
+      it 'should call the action' do # rubocop:disable RSpec/ExampleLength
+        call_action
 
         expect(next_command)
           .to have_received(:call)
-          .with(request: request)
+          .with(
+            repository: repository,
+            request:    request,
+            resource:   resource,
+            **options
+          )
       end
     end
 
@@ -168,7 +171,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       let(:result) { Cuprum::Result.new(error: error) }
 
       it 'should return the result with the session metadata' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(error)
           .and_value(nil)
@@ -180,7 +183,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       let(:result) { Cuprum::Result.new }
 
       it 'should return the result with the session metadata' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(nil)
           .and_metadata({ session: session })
@@ -192,7 +195,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       let(:result) { Cuprum::Result.new(value: value) }
 
       it 'should return the result with the session metadata' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(value)
           .and_metadata({ session: session })
@@ -209,7 +212,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
       end
 
       it 'should return the result with the session metadata' do
-        expect(middleware.call(next_command, request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(result.value)
           .and_metadata(expected_metadata)

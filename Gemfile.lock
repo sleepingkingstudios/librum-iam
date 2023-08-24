@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/cuprum-rails
-  revision: 7f77bab58306bc47277f70f7f8094a2522dc349d
+  revision: ee309f1b60e7bc30f4dc75be6b52a2c09de6f045
   branch: main
   specs:
     cuprum-rails (0.2.0.alpha)
@@ -28,10 +28,11 @@ GIT
 
 GIT
   remote: https://github.com/sleepingkingstudios/librum-core
-  revision: 89031bb081044c66ad28c57ca36965e724b63b27
+  revision: 0b679a89b28c7167f9fda4cf92b480ab2b137e70
   branch: main
   specs:
     librum-core (0.1.0)
+      annotate (~> 3.2)
       cuprum (~> 1.1)
       cuprum-collections
       cuprum-rails

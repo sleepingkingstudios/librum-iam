@@ -7,7 +7,7 @@ module Librum::Iam::Actions::Users
   class Show < Cuprum::Rails::Action
     private
 
-    def process(request:)
+    def process(request:, **)
       super
 
       session = step { require_session }

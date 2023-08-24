@@ -10,7 +10,7 @@ RSpec.describe Librum::Iam::SessionMiddleware, type: :controller do
   example_class 'Spec::ExampleController', Librum::Iam::ApplicationController \
   do |klass|
     klass.include Cuprum::Rails::Controller
-    klass.include Librum::Iam::SessionMiddleware # rubocop:disable Rspec/DescribedClass
+    klass.include Librum::Iam::SessionMiddleware # rubocop:disable RSpec/DescribedClass
   end
 
   describe '.middleware' do

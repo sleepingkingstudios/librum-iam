@@ -3,25 +3,18 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Actions::Users::Show do
-  subject(:action) do
-    described_class.new(repository: repository, resource: resource)
-  end
+  subject(:action) { described_class.new }
 
   let(:repository) { Cuprum::Rails::Repository.new }
-  let(:resource) do
-    Cuprum::Rails::Resource.new(resource_class: Librum::Iam::User)
-  end
-
-  describe '.new' do
-    it 'should define the constructor' do
-      expect(described_class)
-        .to be_constructible
-        .with(0).arguments
-        .and_keywords(:repository, :resource)
-    end
-  end
 
   describe '#call' do
+    def call_action
+      action.call(
+        repository: repository,
+        request:    request
+      )
+    end
+
     it 'should define the method' do
       expect(action).to be_callable.with(0).arguments.and_keywords(:request)
     end
@@ -33,7 +26,7 @@ RSpec.describe Librum::Iam::Actions::Users::Show do
       end
 
       it 'should return a failing result' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -48,7 +41,7 @@ RSpec.describe Librum::Iam::Actions::Users::Show do
       end
 
       it 'should return a passing request' do
-        expect(action.call(request: request))
+        expect(call_action)
           .to be_a_passing_result
           .with_value(expected_value)
       end

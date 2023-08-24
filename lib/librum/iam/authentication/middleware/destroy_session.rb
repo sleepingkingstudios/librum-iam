@@ -19,7 +19,7 @@ module Librum::Iam::Authentication::Middleware
       request.native_session
     end
 
-    def process(next_command, request:)
+    def process(next_command, request:, **)
       @request = request
       result   = next_command.call(request: request)
 
