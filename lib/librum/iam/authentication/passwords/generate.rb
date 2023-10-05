@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'bcrypt'
 require 'cuprum'
 
 module Librum::Iam::Authentication::Passwords
