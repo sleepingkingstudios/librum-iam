@@ -33,7 +33,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'librum-core'
 
-  gem.add_dependency 'cuprum',       '~> 1.1'
+  gem.add_dependency 'cuprum',       '~> 1.2'
   gem.add_dependency 'cuprum-rails', '~> 0.1'
 
   gem.add_dependency 'bcrypt', '~> 3.1.19'
