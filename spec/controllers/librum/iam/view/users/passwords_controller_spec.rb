@@ -21,9 +21,9 @@ do
 
     it { expect(resource.base_path).to be == base_path }
 
-    it { expect(resource.resource_class).to be resource_class }
+    it { expect(resource.entity_class).to be resource_class }
 
-    it { expect(resource.resource_name).to be == 'password' }
+    it { expect(resource.name).to be == 'password' }
 
     it { expect(resource.singular?).to be true }
 

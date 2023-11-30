@@ -78,7 +78,7 @@ RSpec.describe Librum::Iam::View::SessionsController do
 
     it { expect(resource).to be_a Librum::Core::Resources::BaseResource }
 
-    it { expect(resource.resource_name).to be == 'sessions' }
+    it { expect(resource.name).to be == 'sessions' }
 
     it { expect(resource.singular?).to be true }
 

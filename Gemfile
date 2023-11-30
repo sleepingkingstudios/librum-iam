@@ -5,9 +5,10 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in librum-iam.gemspec.
 gemspec
 
-gem 'cuprum',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/cuprum'
+### Assets
+gem 'importmap-rails' # Use JavaScript with ESM import maps
+gem 'sprockets-rails' # The original asset pipeline for Rails
+
 gem 'cuprum-collections',
   branch: 'main',
   git:    'https://github.com/sleepingkingstudios/cuprum-collections'
