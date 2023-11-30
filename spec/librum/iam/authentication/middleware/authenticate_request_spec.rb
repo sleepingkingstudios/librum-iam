@@ -6,7 +6,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
   subject(:middleware) { described_class.new }
 
   let(:repository) { Cuprum::Rails::Repository.new }
-  let(:resource)   { Spec::Resource.new(resource_name: 'rockets') }
+  let(:resource)   { Spec::Resource.new(name: 'rockets') }
 
   example_class 'Spec::Resource', Cuprum::Rails::Resource do |klass|
     klass.include Librum::Iam::Resource
@@ -122,7 +122,7 @@ RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateRequest do
     context 'when the resource does not authenticate the action' do # rubocop:disable RSpec/MultipleMemoizedHelpers
       let(:resource) do
         Spec::Resource.new(
-          resource_name:       'rockets',
+          name:                'rockets',
           skip_authentication: true
         )
       end

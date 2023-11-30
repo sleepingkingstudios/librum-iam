@@ -8,8 +8,8 @@ module Librum::Iam::View
         Librum::Core::Resources::ViewResource.new(
           actions:         %w[show],
           block_component: Librum::Iam::View::Components::Users::Block,
-          resource_class:  Librum::Iam::User,
-          resource_name:   'user',
+          entity_class:    Librum::Iam::User,
+          name:            'user',
           singular:        true
         )
     end

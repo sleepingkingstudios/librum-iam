@@ -9,9 +9,9 @@ module Librum::Iam::View::Users
       @resource ||=
         Librum::Core::Resources::ViewResource.new(
           base_path:      base_path,
+          entity_class:   Librum::Iam::PasswordCredential,
           form_component: Librum::Iam::View::Components::Users::Passwords::Form,
-          resource_class: Librum::Iam::PasswordCredential,
-          resource_name:  'password',
+          name:           'password',
           singular:       true
         )
     end

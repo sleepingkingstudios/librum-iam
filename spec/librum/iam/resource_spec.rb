@@ -8,7 +8,7 @@ RSpec.describe Librum::Iam::Resource do
   subject(:resource) { described_class.new(**constructor_options) }
 
   let(:described_class)     { Spec::AuthenticatedResource }
-  let(:constructor_options) { { resource_name: 'rockets' } }
+  let(:constructor_options) { { name: 'rockets' } }
 
   example_class 'Spec::AuthenticatedResource', Cuprum::Rails::Resource \
   do |klass|

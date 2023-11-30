@@ -12,9 +12,9 @@ RSpec.describe Librum::Iam::View::UsersController, type: :controller do
 
     it { expect(resource.actions).to be == Set.new(%w[show]) }
 
-    it { expect(resource.resource_class).to be == Librum::Iam::User }
+    it { expect(resource.entity_class).to be == Librum::Iam::User }
 
-    it { expect(resource.resource_name).to be == 'user' }
+    it { expect(resource.name).to be == 'user' }
 
     it { expect(resource.singular?).to be true }
 
