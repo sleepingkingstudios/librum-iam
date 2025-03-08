@@ -17,7 +17,7 @@ module Librum
       # Prerelease version.
       PRERELEASE = :alpha
       # Build metadata.
-      BUILD = 0
+      BUILD = 1
 
       class << self
         # Generates the gem version string from the Version constants.
