@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'cuprum/rails/action'
-require 'cuprum/rails/actions/parameter_validation'
-require 'cuprum/rails/constraints/parameters_contract'
 require 'stannum/contracts/indifferent_hash_contract'
 require 'stannum/constraints/presence'
 require 'stannum/constraints/properties/match_property'
@@ -10,8 +8,6 @@ require 'stannum/constraints/properties/match_property'
 module Librum::Iam::Actions::Users::Passwords
   # Action to update the password for the current authenticated user.
   class Update < Cuprum::Rails::Action
-    include Cuprum::Rails::Actions::ParameterValidation
-
     PARAMETERS_CONTRACT = Cuprum::Rails::Constraints::ParametersContract.new do
       presence_constraint =
         Stannum::Constraints::Presence.new(message: "can't be blank")

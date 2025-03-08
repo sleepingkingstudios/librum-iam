@@ -20,7 +20,7 @@ module Librum::Iam
       @authenticated_user = authenticated_user || authorized_user
       @credential         = credential
       @expires_at         = [
-        (expires_at || 1.day.from_now),
+        expires_at || 1.day.from_now,
         credential.expires_at
       ].min
     end

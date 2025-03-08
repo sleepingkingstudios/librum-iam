@@ -4,7 +4,7 @@ require 'rails_helper'
 
 require 'stannum/errors'
 
-RSpec.describe Librum::Iam::View::Components::Users::Passwords::Form, \
+RSpec.describe Librum::Iam::View::Components::Users::Passwords::Form,
   type: :component \
 do
   subject(:form) { described_class.new(errors: errors) }

@@ -1,7 +1,10 @@
 require:
+  - rubocop-rspec_rails
+
+plugins:
   - rubocop-factory_bot
-  - rubocop-rails
   - rubocop-rake
+  - rubocop-rails
   - rubocop-rspec
 
 AllCops:
@@ -72,6 +75,9 @@ Metrics/ModuleLength:
     - spec/**/*_contract*.rb
 
 RSpec/BeNil:
+  Enabled: false
+
+RSpec/Eq:
   Enabled: false
 
 RSpec/ExampleWording:
