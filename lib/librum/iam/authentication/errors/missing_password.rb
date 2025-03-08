@@ -7,13 +7,13 @@ module Librum::Iam::Authentication::Errors
     TYPE = 'librum.iam.authentication.errors.missing_password'
 
     # @param user_id [String] the primary key of the user.
-    def initialize(user_id:, **options)
+    def initialize(user_id:, **)
       @user_id = user_id
 
       super(
         user_id: user_id,
         message: default_message,
-        **options
+        **
       )
     end
 

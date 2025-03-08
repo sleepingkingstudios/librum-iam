@@ -7,8 +7,8 @@ module Librum::Iam
     #   specified actions (or all actions, if set to true) will be set to permit
     #   unauthenticated requests.
     # @param options [Hash<Symbol>] the default options for a resource.
-    def initialize(skip_authentication: false, **options)
-      super(**options)
+    def initialize(skip_authentication: false, **)
+      super(**)
 
       @skip_authentication =
         case skip_authentication

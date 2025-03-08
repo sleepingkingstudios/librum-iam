@@ -7,10 +7,10 @@ module Librum::Iam::Authentication::Errors
     TYPE = 'librum.iam.authentication.errors.invalid_password'
 
     # @param message [String] message describing the nature of the error.
-    def initialize(message: nil, **options)
+    def initialize(message: nil, **)
       super(
         message: message || default_message,
-        **options
+        **
       )
     end
 
