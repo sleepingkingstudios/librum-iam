@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Librum::Iam::Authentication::Middleware::AuthenticateSession do
   subject(:middleware) { described_class.new }
 
-  let(:repository) { Cuprum::Rails::Repository.new }
+  let(:repository) { Cuprum::Rails::Records::Repository.new }
   let(:resource)   { Spec::Resource.new(name: 'rockets') }
 
   example_class 'Spec::Resource', Cuprum::Rails::Resource do |klass|

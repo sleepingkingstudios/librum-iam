@@ -1,3 +1,6 @@
+# Ignore local configuration files.
+/.ruby-version
+
 # Ignore bundler config.
 /.bundle
 Gemfile.lock

@@ -1,7 +1,10 @@
 require:
+  - rubocop-rspec_rails
+
+plugins:
   - rubocop-factory_bot
-  - rubocop-rails
   - rubocop-rake
+  - rubocop-rails
   - rubocop-rspec
 
 AllCops:
@@ -74,6 +77,9 @@ Metrics/ModuleLength:
 RSpec/BeNil:
   Enabled: false
 
+RSpec/Eq:
+  Enabled: false
+
 RSpec/ExampleWording:
   Enabled: false
 
@@ -90,7 +96,7 @@ RSpec/NamedSubject:
 RSpec/NestedGroups:
   Max: 5
 
-RSpec/Rails/InferredSpecType:
+RSpecRails/InferredSpecType:
   Enabled: false
 
 Style/ClassAndModuleChildren:
