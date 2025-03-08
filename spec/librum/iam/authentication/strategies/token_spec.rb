@@ -6,7 +6,7 @@ RSpec.describe Librum::Iam::Authentication::Strategies::Token do
   subject(:strategy) { described_class.new(repository: repository) }
 
   let(:repository) do
-    Cuprum::Rails::Repository
+    Cuprum::Rails::Records::Repository
       .new
       .tap do |repo|
         repo.find_or_create(entity_class: Librum::Iam::Credential)

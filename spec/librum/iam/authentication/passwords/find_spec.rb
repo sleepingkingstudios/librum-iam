@@ -8,7 +8,7 @@ RSpec.describe Librum::Iam::Authentication::Passwords::Find do
   subject(:command) { described_class.new(repository: repository) }
 
   let(:repository) do
-    Cuprum::Rails::Repository.new.tap do |repository|
+    Cuprum::Rails::Records::Repository.new.tap do |repository|
       repository.find_or_create(entity_class: Librum::Iam::Credential)
       repository.find_or_create(entity_class: Librum::Iam::User)
     end

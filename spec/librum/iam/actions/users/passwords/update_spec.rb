@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Librum::Iam::Actions::Users::Passwords::Update do
   subject(:action) { described_class.new }
 
-  let(:repository) { Cuprum::Rails::Repository.new }
+  let(:repository) { Cuprum::Rails::Records::Repository.new }
 
   describe '#call' do
     let(:user)       { FactoryBot.create(:user) }

@@ -96,7 +96,7 @@ RSpec/NamedSubject:
 RSpec/NestedGroups:
   Max: 5
 
-RSpec/Rails/InferredSpecType:
+RSpecRails/InferredSpecType:
   Enabled: false
 
 Style/ClassAndModuleChildren:

@@ -88,7 +88,7 @@ module Librum::Iam
       end
 
       def repository
-        Cuprum::Rails::Repository.new
+        Cuprum::Rails::Records::Repository.new
       end
 
       def users_collection
