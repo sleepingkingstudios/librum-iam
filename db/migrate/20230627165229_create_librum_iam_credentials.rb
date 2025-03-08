@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateLibrumIamCredentials < ActiveRecord::Migration[7.1]
+class CreateLibrumIamCredentials < ActiveRecord::Migration[7.2]
   def change
     create_table :librum_iam_credentials, id: :uuid do |t|
       t.string     :type,       null: false
