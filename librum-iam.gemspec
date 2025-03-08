@@ -36,8 +36,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'cuprum',       '~> 1.2'
   gem.add_dependency 'cuprum-rails', '~> 0.1'
 
-  gem.add_dependency 'bcrypt', '~> 3.1.19'
-  gem.add_dependency 'jwt',    '~> 2.7'
-  gem.add_dependency 'pg',     '~> 1.5'
-  gem.add_dependency 'rails',  '~> 7.0.5'
+  gem.add_dependency 'bcrypt', '~> 3.1.20'
+  gem.add_dependency 'jwt', '~> 2.10'
+  gem.add_dependency 'pg', '~> 1.5'
+  gem.add_dependency 'rails', '~> 7.1.5'
+  gem.add_dependency 'view_component', '~> 3.21'
 end
