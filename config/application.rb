@@ -19,7 +19,7 @@ module Librum
     # The test application for Librum::Iam.
     class Application < Rails::Application
       # Initialize configuration defaults for originally generated Rails version.
-      config.load_defaults 7.2
+      config.load_defaults 8.0
 
       config.eager_load = false
 

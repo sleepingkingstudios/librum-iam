@@ -34,7 +34,7 @@ gem 'librum-core',
   git:    'https://github.com/sleepingkingstudios/librum-core'
 
 group :development, :test do
-  gem 'annotate'
+  gem 'annotaterb', '~> 4.14'
 
   gem 'byebug'
 
