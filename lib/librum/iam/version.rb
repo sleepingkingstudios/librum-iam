@@ -15,9 +15,9 @@ module Librum
       # Patch version.
       PATCH = 0
       # Prerelease version.
-      PRERELEASE = nil
+      PRERELEASE = :alpha
       # Build metadata.
-      BUILD = nil
+      BUILD = 0
 
       class << self
         # Generates the gem version string from the Version constants.
