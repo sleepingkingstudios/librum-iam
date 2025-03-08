@@ -69,7 +69,7 @@ PATH
       jwt (~> 2.7)
       librum-core
       pg (~> 1.5)
-      rails (~> 7.0.5)
+      rails (>= 7.0, < 9.0)
 
 GEM
   remote: https://rubygems.org/
@@ -349,6 +349,7 @@ DEPENDENCIES
   importmap-rails
   librum-core!
   librum-iam!
+  rails (~> 7.0.8)
   rspec (~> 3.13)
   rspec-rails (~> 7.1)
   rspec-sleeping_king_studios (~> 2.7)

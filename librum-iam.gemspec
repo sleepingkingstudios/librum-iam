@@ -39,5 +39,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'bcrypt', '~> 3.1.19'
   gem.add_dependency 'jwt',    '~> 2.7'
   gem.add_dependency 'pg',     '~> 1.5'
-  gem.add_dependency 'rails',  '~> 7.0.5'
+  gem.add_dependency 'rails',  '>= 7.0', '< 9.0'
 end

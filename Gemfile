@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'concurrent-ruby', '1.3.4' # Rails 7.0 only.
+gem 'rails', '~> 7.0.8'
 
 ### Assets
 gem 'importmap-rails' # Use JavaScript with ESM import maps
