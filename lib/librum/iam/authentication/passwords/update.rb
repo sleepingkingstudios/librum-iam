@@ -99,11 +99,11 @@ module Librum::Iam::Authentication::Passwords
       end
     end
 
-    def transaction(&block)
+    def transaction(&)
       result = nil
 
       Librum::Iam::Credential.transaction do
-        result = steps(&block)
+        result = steps(&)
 
         raise ActiveRecord::Rollback if result.failure?
       end
