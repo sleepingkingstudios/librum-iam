@@ -19,12 +19,12 @@ module Librum
     # The test application for Librum::Iam.
     class Application < Rails::Application
       # Initialize configuration defaults for originally generated Rails version.
-      config.load_defaults 7.0
+      config.load_defaults 8.0
 
       config.eager_load = false
 
       # Configure autoload paths.
-      config.autoload_paths << "#{root}/lib"
+      config.autoload_lib(ignore: %w[tasks])
       config.autoload_paths << "#{Librum::Core::Engine.root}/lib"
     end
   end

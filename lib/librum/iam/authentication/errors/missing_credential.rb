@@ -7,13 +7,13 @@ module Librum::Iam::Authentication::Errors
     TYPE = 'librum.iam.authentication.errors.missing_credential'
 
     # @param credential_id [String] The primary key of the missing credential.
-    def initialize(credential_id:, **options)
+    def initialize(credential_id:, **)
       @credential_id = credential_id
 
       super(
         credential_id: credential_id,
         message:       default_message,
-        **options
+        **
       )
     end
 

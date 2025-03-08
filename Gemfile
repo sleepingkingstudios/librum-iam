@@ -5,8 +5,6 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in librum-iam.gemspec.
 gemspec
 
-gem 'concurrent-ruby', '1.3.4' # Rails 7.0 only.
-
 ### Assets
 gem 'importmap-rails' # Use JavaScript with ESM import maps
 gem 'sprockets-rails' # The original asset pipeline for Rails
@@ -36,7 +34,7 @@ gem 'librum-core',
   git:    'https://github.com/sleepingkingstudios/librum-core'
 
 group :development, :test do
-  gem 'annotate'
+  gem 'annotaterb', '~> 4.14'
 
   gem 'byebug'
 
