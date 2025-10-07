@@ -17,7 +17,7 @@ module Librum::Iam
         new root user.
       TEXT
       def create_root_user # rubocop:disable Metrics/MethodLength
-        unless users_collection.query.count.zero?
+        unless users_collection.query.count.zero? # rubocop:disable Style/CollectionQuerying
           error 'Failure: a Librum::Iam::User already exists.'
 
           return
