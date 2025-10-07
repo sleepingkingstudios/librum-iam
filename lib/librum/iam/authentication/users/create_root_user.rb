@@ -71,7 +71,7 @@ module Librum::Iam::Authentication::Users
 
     def generate_slug(username)
       step do
-        Librum::Core::Models::Attributes::GenerateSlug.new.call(
+        Librum::Core::Commands::Attributes::GenerateSlug.new.call(
           attributes: { name: username }
         )
       end
@@ -106,7 +106,7 @@ module Librum::Iam::Authentication::Users
     end
 
     def validate_first_user
-      return if users_collection.query.count.zero?
+      return if users_collection.query.count.zero? # rubocop:disable Style/CollectionQuerying
 
       error = Cuprum::Error.new(message: 'a Librum::Iam::User already exists')
       failure(error)

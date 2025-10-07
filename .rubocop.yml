@@ -1,42 +1,16 @@
-require:
-  - rubocop-rspec_rails
-
 plugins:
   - rubocop-factory_bot
   - rubocop-rake
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
+
+inherit_gem:
+  rspec-sleeping_king_studios: config/rubocop-rspec.yml
 
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.4
-
-RSpec:
-  Language:
-    ExampleGroups:
-      Regular:
-        - context
-        - describe
-        - wrap_context
-      Skipped:
-        - xcontext
-        - xdescribe
-        - xwrap_context
-      Focused:
-        - fcontext
-        - fdescribe
-        - fwrap_context
-    Includes:
-      Examples:
-        - finclude_contract
-        - finclude_examples
-        - fwrap_examples
-        - include_contract
-        - include_examples
-        - wrap_examples
-        - xinclude_contract
-        - xinclude_examples
-        - xwrap_examples
 
 FactoryBot/SyntaxMethods:
   Enabled: false
@@ -85,6 +59,9 @@ RSpec/ExampleWording:
 
 RSpec/HookArgument:
   EnforcedStyle: example
+
+RSpec/IncludeExamples:
+  Enabled: false
 
 RSpec/MultipleMemoizedHelpers:
   Max: 10

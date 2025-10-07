@@ -2,11 +2,13 @@
 
 require 'rails_helper'
 
+require 'cuprum/rails/rspec/deferred/responder_examples'
+
 RSpec.describe Librum::Iam::View::SessionsController do
   include Librum::Core::RSpec::Contracts::ControllerContracts
 
   describe '::Responder' do
-    include Librum::Core::RSpec::Contracts::Responders::HtmlContracts
+    include Cuprum::Rails::RSpec::Deferred::ResponderExamples
 
     subject(:responder) do
       described_class::Responder.new(**constructor_options)
@@ -33,7 +35,7 @@ RSpec.describe Librum::Iam::View::SessionsController do
         describe 'with a passing result' do
           let(:result) { Cuprum::Result.new(status: :success) }
 
-          include_contract 'should redirect back'
+          include_deferred 'should redirect back'
         end
 
         describe 'with a failing result with an InvalidLogin error' do
@@ -48,7 +50,7 @@ RSpec.describe Librum::Iam::View::SessionsController do
             }
           end
 
-          include_contract 'should redirect back',
+          include_deferred 'should redirect back',
             flash: -> { flash }
         end
       end
@@ -67,7 +69,7 @@ RSpec.describe Librum::Iam::View::SessionsController do
             }
           end
 
-          include_contract 'should redirect to', '/', flash: -> { flash }
+          include_deferred 'should redirect to', '/', flash: -> { flash }
         end
       end
     end
