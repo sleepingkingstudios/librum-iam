@@ -2,18 +2,15 @@
 
 require 'rails_helper'
 
-require 'cuprum/rails/rspec/contracts/responder_contracts'
+require 'cuprum/rails/rspec/deferred/responder_examples'
 
 RSpec.describe Librum::Iam::Responders::Html::AuthenticatedResponder do
-  include Cuprum::Rails::RSpec::Contracts::ResponderContracts
+  include Cuprum::Rails::RSpec::Deferred::ResponderExamples
   include Librum::Core::RSpec::Contracts::Responders::HtmlContracts
 
   subject(:responder) { described_class.new(**constructor_options) }
 
   let(:described_class) { Spec::ExampleResponder }
-  let(:action_name) { 'implement' }
-  let(:controller)  { CustomController.new }
-  let(:request)     { Cuprum::Rails::Request.new }
   let(:resource_options) do
     { name: 'rockets' }
   end
@@ -31,8 +28,7 @@ RSpec.describe Librum::Iam::Responders::Html::AuthenticatedResponder do
     klass.include Librum::Iam::Responders::Html::AuthenticatedResponder # rubocop:disable RSpec/DescribedClass
   end
 
-  include_contract 'should implement the responder methods',
-    controller_name: 'CustomController'
+  include_deferred 'should implement the Responder methods'
 
   describe '#call' do
     let(:response) { responder.call(result) }
