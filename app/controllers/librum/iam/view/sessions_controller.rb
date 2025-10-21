@@ -48,7 +48,7 @@ module Librum::Iam::View
 
     responder :html, Librum::Iam::View::SessionsController::Responder
 
-    action :create,  Librum::Iam::Actions::Sessions::Create
+    action :create,  Librum::Iam::Authentication::Sessions::Actions::Create
 
     action :destroy, Cuprum::Rails::Action
   end

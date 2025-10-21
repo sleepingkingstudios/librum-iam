@@ -2,13 +2,16 @@
 
 require 'rails_helper'
 
+require 'cuprum/rails/rspec/deferred/controller_examples'
 require 'cuprum/rails/rspec/deferred/responder_examples'
+require 'cuprum/rails/rspec/deferred/responses/html_response_examples'
 
 RSpec.describe Librum::Iam::View::SessionsController do
-  include Librum::Core::RSpec::Contracts::ControllerContracts
+  include Cuprum::Rails::RSpec::Deferred::ControllerExamples
 
   describe '::Responder' do
     include Cuprum::Rails::RSpec::Deferred::ResponderExamples
+    include Cuprum::Rails::RSpec::Deferred::Responses::HtmlResponseExamples
 
     subject(:responder) do
       described_class::Responder.new(**constructor_options)
@@ -88,17 +91,17 @@ RSpec.describe Librum::Iam::View::SessionsController do
   end
 
   describe '.responders' do
-    include_contract 'should respond to format',
+    include_deferred 'should respond to format',
       :html,
       using: described_class::Responder
   end
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :create,
-    Librum::Iam::Actions::Sessions::Create,
+    Librum::Iam::Authentication::Sessions::Actions::Create,
     member: false
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :destroy,
     Cuprum::Rails::Action,
     member: false
