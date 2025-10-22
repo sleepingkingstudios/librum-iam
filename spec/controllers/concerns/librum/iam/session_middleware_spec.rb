@@ -2,8 +2,10 @@
 
 require 'rails_helper'
 
+require 'cuprum/rails/rspec/deferred/controller_examples'
+
 RSpec.describe Librum::Iam::SessionMiddleware, type: :controller do
-  include Librum::Core::RSpec::Contracts::ControllerContracts
+  include Cuprum::Rails::RSpec::Deferred::ControllerExamples
 
   let(:described_class) { Spec::ExampleController }
 
@@ -14,7 +16,7 @@ RSpec.describe Librum::Iam::SessionMiddleware, type: :controller do
   end
 
   describe '.middleware' do
-    include_contract 'should define middleware',
+    include_deferred 'should define middleware',
       Librum::Iam::Authentication::Middleware::AuthenticateSession
   end
 end
