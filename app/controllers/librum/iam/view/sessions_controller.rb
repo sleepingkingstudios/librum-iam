@@ -48,6 +48,12 @@ module Librum::Iam::View
 
     responder :html, Librum::Iam::View::SessionsController::HtmlResponder
 
+    middleware Librum::Iam::Authentication::Middleware::DestroySession,
+      actions: { only: %i[destroy] }
+
+    middleware Librum::Iam::Authentication::Middleware::RegenerateSession,
+      actions: { only: %i[create] }
+
     action :create,  Librum::Iam::Authentication::Sessions::Actions::Create
 
     action :destroy, Librum::Iam::Authentication::Sessions::Actions::Destroy

@@ -96,6 +96,14 @@ RSpec.describe Librum::Iam::View::SessionsController do
       using: described_class::HtmlResponder
   end
 
+  include_deferred 'should define middleware',
+    Librum::Iam::Authentication::Middleware::DestroySession,
+    actions: { only: :destroy }
+
+  include_deferred 'should define middleware',
+    Librum::Iam::Authentication::Middleware::RegenerateSession,
+    actions: { only: :create }
+
   include_deferred 'should define action',
     :create,
     Librum::Iam::Authentication::Sessions::Actions::Create,
