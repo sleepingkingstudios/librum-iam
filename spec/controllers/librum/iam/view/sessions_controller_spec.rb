@@ -103,6 +103,6 @@ RSpec.describe Librum::Iam::View::SessionsController do
 
   include_deferred 'should define action',
     :destroy,
-    Cuprum::Rails::Action,
+    Librum::Iam::Authentication::Sessions::Actions::Destroy,
     member: false
 end

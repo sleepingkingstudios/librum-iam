@@ -30,7 +30,7 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Commands::Create do
       Librum::Iam::Authentication::Errors::InvalidLogin.new
     end
 
-    define_method :call_action do
+    define_method :call_command do
       command.call(password:, username:)
     end
 
@@ -39,11 +39,12 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Commands::Create do
         .to be_callable
         .with(0).arguments
         .and_keywords(:password, :username)
+        .and_any_keywords
     end
 
     context 'when the user does not exist' do
       it 'should return a failing result' do
-        expect(call_action)
+        expect(call_command)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -55,7 +56,7 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Commands::Create do
       before(:example) { user.save! }
 
       it 'should return a failing result' do
-        expect(call_action)
+        expect(call_command)
           .to be_a_failing_result
           .with_error(expected_error)
       end
@@ -75,7 +76,7 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Commands::Create do
         before(:example) { credential.save! }
 
         it 'should return a failing result' do
-          expect(call_action)
+          expect(call_command)
             .to be_a_failing_result
             .with_error(expected_error)
         end
@@ -93,7 +94,7 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Commands::Create do
         before(:example) { credential.save! }
 
         it 'should return a failing result' do
-          expect(call_action)
+          expect(call_command)
             .to be_a_failing_result
             .with_error(expected_error)
         end
@@ -121,7 +122,7 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Commands::Create do
         let(:current_time) { Time.current }
 
         def encoded_token
-          result = call_action
+          result = call_command
 
           result.value
         end
@@ -133,7 +134,7 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Commands::Create do
         end
 
         it 'should return a passing result' do
-          expect(call_action)
+          expect(call_command)
             .to be_a_passing_result
             .with_value(an_instance_of(String))
         end

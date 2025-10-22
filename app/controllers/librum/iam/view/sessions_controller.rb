@@ -50,6 +50,6 @@ module Librum::Iam::View
 
     action :create,  Librum::Iam::Authentication::Sessions::Actions::Create
 
-    action :destroy, Cuprum::Rails::Action
+    action :destroy, Librum::Iam::Authentication::Sessions::Actions::Destroy
   end
 end

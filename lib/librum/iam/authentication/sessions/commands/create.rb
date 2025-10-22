@@ -15,7 +15,7 @@ module Librum::Iam::Authentication::Sessions::Commands
         .call(password:, username:)
     end
 
-    def process(password:, username:)
+    def process(password:, username:, **)
       credential = step { find_credential(password:, username:) }
       session    = Librum::Iam::Session.new(credential: credential)
 
