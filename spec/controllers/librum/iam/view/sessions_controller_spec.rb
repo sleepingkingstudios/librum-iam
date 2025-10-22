@@ -9,12 +9,12 @@ require 'cuprum/rails/rspec/deferred/responses/html_response_examples'
 RSpec.describe Librum::Iam::View::SessionsController do
   include Cuprum::Rails::RSpec::Deferred::ControllerExamples
 
-  describe '::Responder' do
+  describe '::HtmlResponder' do
     include Cuprum::Rails::RSpec::Deferred::ResponderExamples
     include Cuprum::Rails::RSpec::Deferred::Responses::HtmlResponseExamples
 
     subject(:responder) do
-      described_class::Responder.new(**constructor_options)
+      described_class::HtmlResponder.new(**constructor_options)
     end
 
     let(:action_name) { 'process' }
@@ -93,7 +93,7 @@ RSpec.describe Librum::Iam::View::SessionsController do
   describe '.responders' do
     include_deferred 'should respond to format',
       :html,
-      using: described_class::Responder
+      using: described_class::HtmlResponder
   end
 
   include_deferred 'should define action',

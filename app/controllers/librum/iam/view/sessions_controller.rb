@@ -4,7 +4,7 @@ module Librum::Iam::View
   # Controller for managing authentication sessions.
   class SessionsController < Librum::Core::ViewController
     # Responder class for authentication responses.
-    class Responder < Librum::Core::Responders::Html::ViewResponder
+    class HtmlResponder < Librum::Core::Responders::Html::ViewResponder
       action :create do
         match :success do
           redirect_back
@@ -46,7 +46,7 @@ module Librum::Iam::View
         )
     end
 
-    responder :html, Librum::Iam::View::SessionsController::Responder
+    responder :html, Librum::Iam::View::SessionsController::HtmlResponder
 
     action :create,  Librum::Iam::Authentication::Sessions::Actions::Create
 
