@@ -2,8 +2,10 @@
 
 require 'rails_helper'
 
+require 'cuprum/rails/rspec/deferred/controller_examples'
+
 RSpec.describe Librum::Iam::View::UsersController, type: :controller do
-  include Librum::Core::RSpec::Contracts::ControllerContracts
+  include Cuprum::Rails::RSpec::Deferred::ControllerExamples
 
   describe '.resource' do
     subject(:resource) { described_class.resource }
@@ -25,14 +27,14 @@ RSpec.describe Librum::Iam::View::UsersController, type: :controller do
   end
 
   describe '.responders' do
-    include_contract 'should respond to format',
+    include_deferred 'should respond to format',
       :html,
       using: Librum::Core::Responders::Html::ResourceResponder
 
-    include_contract 'should not respond to format', :json
+    include_deferred 'should not respond to format', :json
   end
 
-  include_contract 'should define action',
+  include_deferred 'should define action',
     :show,
     Librum::Iam::Actions::Users::Show,
     member: false
