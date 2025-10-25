@@ -4,9 +4,11 @@ require 'rails_helper'
 
 require 'cuprum/rails/rspec/deferred/responder_examples'
 
+require 'librum/iam/rspec/deferred/responses/html_response_examples'
+
 RSpec.describe Librum::Iam::Responders::Html::AuthenticatedResponder do
   include Cuprum::Rails::RSpec::Deferred::ResponderExamples
-  include Librum::Core::RSpec::Contracts::Responders::HtmlContracts
+  include Librum::Iam::RSpec::Deferred::Responses::HtmlResponseExamples
 
   subject(:responder) { described_class.new(**constructor_options) }
 
@@ -40,12 +42,7 @@ RSpec.describe Librum::Iam::Responders::Html::AuthenticatedResponder do
       end
       let(:result) { Cuprum::Result.new(error: error) }
 
-      include_contract 'should render page',
-        Librum::Iam::View::Pages::LoginPage,
-        assigns:     {},
-        http_status: :unauthorized,
-        layout:      'login',
-        resource:    nil
+      include_deferred 'should render the login page'
     end
   end
 end
