@@ -6,13 +6,12 @@ require 'cuprum/rails/rspec/deferred/responder_examples'
 
 require 'librum/iam/rspec/deferred/responses/html_response_examples'
 
-RSpec.describe Librum::Iam::Responders::Html::AuthenticatedResponder do
+RSpec.describe Librum::Core::Responders::Html::ViewResponder do
   include Cuprum::Rails::RSpec::Deferred::ResponderExamples
   include Librum::Iam::RSpec::Deferred::Responses::HtmlResponseExamples
 
   subject(:responder) { described_class.new(**constructor_options) }
 
-  let(:described_class) { Spec::ExampleResponder }
   let(:resource_options) do
     { name: 'rockets' }
   end
@@ -22,12 +21,6 @@ RSpec.describe Librum::Iam::Responders::Html::AuthenticatedResponder do
       controller:  controller,
       request:     request
     }
-  end
-
-  example_class 'Spec::ExampleResponder',
-    Librum::Core::Responders::Html::ViewResponder \
-  do |klass|
-    klass.include Librum::Iam::Responders::Html::AuthenticatedResponder # rubocop:disable RSpec/DescribedClass
   end
 
   include_deferred 'should implement the Responder methods'
