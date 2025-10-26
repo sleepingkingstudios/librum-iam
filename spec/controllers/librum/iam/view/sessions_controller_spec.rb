@@ -81,7 +81,7 @@ RSpec.describe Librum::Iam::View::SessionsController do
   describe '.resource' do
     subject(:resource) { described_class.resource }
 
-    it { expect(resource).to be_a Librum::Core::Resources::BaseResource }
+    it { expect(resource).to be_a Librum::Core::Resource }
 
     it { expect(resource.name).to be == 'sessions' }
 

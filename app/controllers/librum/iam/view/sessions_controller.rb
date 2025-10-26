@@ -39,7 +39,7 @@ module Librum::Iam::View
 
     def self.resource
       @resource ||=
-        Librum::Core::Resources::BaseResource.new(
+        Librum::Core::Resource.new(
           name:                'sessions',
           skip_authentication: %i[create destroy],
           singular:            true
