@@ -24,17 +24,8 @@ module Librum
       config.eager_load = false
 
       # Configure autoload paths.
-      config.autoload_lib(ignore: %w[tasks])
+      config.autoload_lib(ignore: %w[ext tasks])
       config.autoload_paths << "#{Librum::Core::Engine.root}/lib"
-
-      overrides = Rails.root.join('lib/ext')
-      Rails.autoloaders.main.ignore(overrides)
-
-      config.to_prepare do
-        Dir.glob("#{overrides}/**/*.rb").each do |override|
-          load override
-        end
-      end
     end
   end
 end
