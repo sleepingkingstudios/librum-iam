@@ -11,6 +11,10 @@ require 'cuprum/rspec/be_a_result'
 require 'cuprum/rspec/be_callable'
 require 'rspec/sleeping_king_studios/all'
 
+require 'librum/components/rspec/bulma_helpers'
+require 'librum/components/rspec/component_helpers'
+require 'plumbum/rspec/stub_provider'
+
 # Isolated namespace for defining spec-only or transient objects.
 module Spec; end
 
@@ -23,6 +27,10 @@ RSpec.configure do |config|
   config.extend  RSpec::SleepingKingStudios::Concerns::WrapExamples
   config.include RSpec::SleepingKingStudios::Deferred::Consumer
   config.include RSpec::SleepingKingStudios::Examples::PropertyExamples
+  config.include Plumbum::RSpec::StubProvider
+
+  config.include Librum::Components::RSpec::BulmaHelpers,     framework: :bulma
+  config.include Librum::Components::RSpec::ComponentHelpers, type: :component
 
   config.disable_monkey_patching!
 

@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::View::Components::Users::Block, type: :component do
+  include Librum::Core::RSpec::ComponentHelpers
+
   subject(:block) { described_class.new(data: data) }
 
   let(:data) { FactoryBot.build(:user, username: 'Custom User') }

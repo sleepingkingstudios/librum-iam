@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::View::Pages::LoginPage, type: :component do
+  include Librum::Core::RSpec::ComponentHelpers
+
   subject(:page) { described_class.new(result) }
 
   let(:result) { Cuprum::Result.new }

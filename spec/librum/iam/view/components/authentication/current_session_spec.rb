@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe Librum::Iam::View::Components::Authentication::CurrentSession,
   type: :component \
 do
+  include Librum::Core::RSpec::ComponentHelpers
+
   subject(:current_session) { described_class.new(session: session) }
 
   shared_context 'when initialized with a session' do

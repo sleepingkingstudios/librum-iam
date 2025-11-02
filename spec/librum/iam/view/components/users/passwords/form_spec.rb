@@ -7,6 +7,8 @@ require 'stannum/errors'
 RSpec.describe Librum::Iam::View::Components::Users::Passwords::Form,
   type: :component \
 do
+  include Librum::Core::RSpec::ComponentHelpers
+
   subject(:form) { described_class.new(errors: errors) }
 
   shared_context 'with errors' do

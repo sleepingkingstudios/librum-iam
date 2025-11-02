@@ -10,6 +10,9 @@ module Librum::Iam
 
     config.before_configuration do
       Rails.autoloaders.each { |autoloader| autoloader.ignore(overrides) }
+
+      config.authentication_session_path = nil
+      config.authentication_user_path    = nil
     end
 
     config.to_prepare do
