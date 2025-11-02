@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe Librum::Iam::View::Components::Sessions::Form,
   type: :component \
 do
+  include Librum::Core::RSpec::ComponentHelpers
+
   subject(:form) { described_class.new }
 
   describe '.new' do

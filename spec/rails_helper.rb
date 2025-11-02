@@ -32,20 +32,22 @@ Librum::Iam::RSpec::Factories.define_factories
 
 RSpec.configure do |config|
   config.include Cuprum::Rails::RSpec::Matchers
-  config.include Librum::Core::RSpec::ComponentHelpers, type: :component
 
   # ViewComponents delegate #respond_to? to their controller. This makes testing
   # their own instance methods difficult. The following stubs out this behavior
   # in tests and replaces it with the core Ruby behavior.
   config.before(:example, type: :component) do
     # :nocov:
-    allow(subject).to receive(:respond_to?) \
-    do |symbol, include_all = false|
+    component = subject
+
+    allow(component).to receive(:respond_to?) do |symbol, include_all = false|
       Object
         .instance_method(:respond_to?)
-        .bind(subject)
+        .bind(component)
         .call(symbol, include_all)
     end
+  rescue Librum::Components::Errors::InvalidOptionsError
+    # Do nothing.
     # :nocov:
   end
 
