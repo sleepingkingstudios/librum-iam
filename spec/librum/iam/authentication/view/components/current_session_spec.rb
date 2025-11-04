@@ -107,7 +107,7 @@ do
 
                   <input type="hidden" name="authenticity_token" value="[token]" autocomplete="off">
 
-                  <button class="button has-text-danger is-backgroundless is-borderless is-shadowless m-0 p-0 is-outlined" type="submit">
+                  <button class="button has-text-danger is-outlined is-borderless is-shadowless m-0 p-0" type="submit">
                     <span class="icon">
                       <i class="fa-solid fa-user-xmark"></i>
                     </span>
@@ -180,7 +180,7 @@ do
 
                   <input type="hidden" name="authenticity_token" value="[token]" autocomplete="off">
 
-                  <button class="button has-text-danger is-backgroundless is-borderless is-shadowless m-0 p-0 is-outlined" type="submit">
+                  <button class="button has-text-danger is-outlined is-borderless is-shadowless m-0 p-0" type="submit">
                     <span class="icon">
                       <i class="fa-solid fa-user-xmark"></i>
                     </span>
