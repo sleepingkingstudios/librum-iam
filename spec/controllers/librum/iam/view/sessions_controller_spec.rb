@@ -72,7 +72,10 @@ RSpec.describe Librum::Iam::View::SessionsController do
             }
           end
 
-          include_deferred 'should redirect to', '/', flash: -> { flash }
+          include_deferred 'should redirect to',
+            '/',
+            flash:  -> { flash },
+            status: 303
         end
       end
     end

@@ -22,8 +22,9 @@ RSpec.describe Librum::Iam::Authentication::Sessions::Actions::Create do
     include_deferred 'should validate the parameters',
       using_contract:   described_class::CONTRACT,
       validation_error: lambda {
-        Librum::Iam::Authentication::Errors::InvalidLogin
-          .new(errors: configured_errors)
+        Librum::Iam::Authentication::Errors::InvalidLogin.new(
+          errors: configured_errors
+        )
       }
 
     describe 'with valid parameters' do
