@@ -7,7 +7,7 @@ module Librum::Iam::View
     class HtmlResponder < Librum::Core::Responders::Html::ViewResponder
       action :create do
         match :success do
-          redirect_back
+          redirect_back(status: 303)
         end
 
         match :failure,
@@ -18,7 +18,10 @@ module Librum::Iam::View
             message: 'Invalid username or password.'
           }
 
-          redirect_back(flash: { danger: alert })
+          redirect_back(
+            flash:  { danger: alert },
+            status: 303
+          )
         end
       end
 
@@ -31,7 +34,8 @@ module Librum::Iam::View
 
           redirect_to(
             '/',
-            flash: { warning: alert }
+            flash:  { warning: alert },
+            status: 303 # rubocop:disable Rails/HttpStatus
           )
         end
       end

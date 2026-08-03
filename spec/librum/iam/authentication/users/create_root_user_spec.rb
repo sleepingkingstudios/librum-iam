@@ -3,9 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Authentication::Users::CreateRootUser do
-  subject(:command) { described_class.new(repository: repository) }
+  subject(:command) { described_class.new(repository:) }
 
-  let(:repository) { Cuprum::Rails::Records::Repository.new }
+  let(:repository) do
+    Cuprum::Rails::Records::Repository.new.tap do |repo|
+      repo.create(entity_class: Librum::Iam::Credential)
+      repo.create(entity_class: Librum::Iam::User)
+    end
+  end
 
   describe '.new' do
     it 'should define the constructor' do

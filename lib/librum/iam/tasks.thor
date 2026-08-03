@@ -92,7 +92,7 @@ module Librum::Iam
       end
 
       def users_collection
-        repository.find_or_create(entity_class: Librum::Iam::User)
+        repository.find(entity_class: Librum::Iam::User)
       end
     end
   end

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Authentication::Strategies::SessionToken do
-  subject(:strategy) { described_class.new(repository: repository) }
+  subject(:strategy) { described_class.new(repository:) }
 
   shared_context 'with a session with an auth_token' do
     let(:token) { 'token' }
@@ -22,9 +22,7 @@ RSpec.describe Librum::Iam::Authentication::Strategies::SessionToken do
   let(:repository) do
     Cuprum::Rails::Records::Repository
       .new
-      .tap do |repo|
-        repo.find_or_create(entity_class: Librum::Iam::Credential)
-      end
+      .tap { |repo| repo.create(entity_class: Librum::Iam::Credential) }
   end
   let(:native_session) do
     instance_double(
