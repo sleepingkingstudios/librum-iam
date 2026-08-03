@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Authentication::Passwords::Update do
-  subject(:command) { described_class.new(repository: repository, user: user) }
+  subject(:command) { described_class.new(repository:, user:) }
 
   let(:repository) do
     Cuprum::Rails::Records::Repository.new.tap do |repository|
-      repository.find_or_create(entity_class: Librum::Iam::Credential)
-      repository.find_or_create(entity_class: Librum::Iam::User)
+      repository.create(entity_class: Librum::Iam::Credential)
+      repository.create(entity_class: Librum::Iam::User)
     end
   end
   let(:user) { FactoryBot.build(:user) }

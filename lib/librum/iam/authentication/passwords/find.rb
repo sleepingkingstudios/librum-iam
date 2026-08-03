@@ -21,7 +21,7 @@ module Librum::Iam::Authentication::Passwords
     private
 
     def credentials_collection
-      repository.find_or_create(entity_class: Librum::Iam::Credential)
+      repository.find(entity_class: Librum::Iam::Credential)
     end
 
     def find_credential(user)
@@ -56,7 +56,7 @@ module Librum::Iam::Authentication::Passwords
     end
 
     def users_collection
-      repository.find_or_create(entity_class: Librum::Iam::User)
+      repository.find(entity_class: Librum::Iam::User)
     end
 
     def validate_credential(credential:, password:)

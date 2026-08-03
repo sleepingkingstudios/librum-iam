@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Librum::Iam::Authentication::Strategies::RequestToken do
-  subject(:strategy) { described_class.new(repository: repository) }
+  subject(:strategy) { described_class.new(repository:) }
 
   shared_context 'with a request with an empty Authorization header' do
     let(:headers) { super().merge('Authorization' => '') }
@@ -30,9 +30,7 @@ RSpec.describe Librum::Iam::Authentication::Strategies::RequestToken do
   let(:repository) do
     Cuprum::Rails::Records::Repository
       .new
-      .tap do |repo|
-        repo.find_or_create(entity_class: Librum::Iam::Credential)
-      end
+      .tap { |repo| repo.create(entity_class: Librum::Iam::Credential) }
   end
   let(:headers) { {} }
   let(:params)  { {} }

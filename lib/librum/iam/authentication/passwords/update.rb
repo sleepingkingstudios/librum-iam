@@ -44,7 +44,7 @@ module Librum::Iam::Authentication::Passwords
     end
 
     def credentials_collection
-      repository.find_or_create(entity_class: Librum::Iam::Credential)
+      repository.find(entity_class: Librum::Iam::Credential)
     end
 
     def deactivate_credential(credential:)

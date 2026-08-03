@@ -8,9 +8,7 @@ RSpec.describe Librum::Iam::Authentication::Strategies::Token do
   let(:repository) do
     Cuprum::Rails::Records::Repository
       .new
-      .tap do |repo|
-        repo.find_or_create(entity_class: Librum::Iam::Credential)
-      end
+      .tap { |repo| repo.create(entity_class: Librum::Iam::Credential) }
   end
   let(:headers) { {} }
   let(:params)  { {} }
