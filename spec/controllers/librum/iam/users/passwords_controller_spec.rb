@@ -4,9 +4,7 @@ require 'rails_helper'
 
 require 'cuprum/rails/rspec/deferred/controller_examples'
 
-RSpec.describe Librum::Iam::View::Users::PasswordsController,
-  type: :controller \
-do
+RSpec.describe Librum::Iam::Users::PasswordsController, type: :controller do
   include Cuprum::Rails::RSpec::Deferred::ControllerExamples
 
   describe '.resource' do
