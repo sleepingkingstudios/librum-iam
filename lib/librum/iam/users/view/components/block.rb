@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Librum::Iam::View::Components::Users
+module Librum::Iam::Users::View::Components
   # Renders the current user.
-  class Block < ViewComponent::Base
+  class Block < Librum::Components::Base
     FIELDS = [
       { key: 'username' }.freeze,
       { key: 'slug' }.freeze,
