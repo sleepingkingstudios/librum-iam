@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Librum::Iam::View
+module Librum::Iam
   # Controller for managing the current user.
   class UsersController < Librum::Core::ViewController
     def self.resource

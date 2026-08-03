@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Librum::Iam::View::Users
+module Librum::Iam::Users
   # Controller for managing the current user's password.
   class PasswordsController < Librum::Core::ViewController
     def self.resource

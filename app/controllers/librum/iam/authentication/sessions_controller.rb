@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Librum::Iam::View
+module Librum::Iam::Authentication
   # Controller for managing authentication sessions.
   class SessionsController < Librum::Core::ViewController
     # Responder class for authentication responses.
@@ -50,7 +50,7 @@ module Librum::Iam::View
         )
     end
 
-    responder :html, Librum::Iam::View::SessionsController::HtmlResponder
+    responder :html, HtmlResponder
 
     middleware Librum::Iam::Authentication::Middleware::DestroySession,
       actions: { only: %i[destroy] }

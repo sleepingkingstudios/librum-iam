@@ -6,7 +6,7 @@ require 'cuprum/rails/rspec/deferred/controller_examples'
 require 'cuprum/rails/rspec/deferred/responder_examples'
 require 'cuprum/rails/rspec/deferred/responses/html_response_examples'
 
-RSpec.describe Librum::Iam::View::SessionsController do
+RSpec.describe Librum::Iam::Authentication::SessionsController do
   include Cuprum::Rails::RSpec::Deferred::ControllerExamples
 
   describe '::HtmlResponder' do
