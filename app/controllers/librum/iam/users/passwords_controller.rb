@@ -7,18 +7,18 @@ module Librum::Iam::Users
       base_path = Librum::Iam::Engine.config.authentication_user_password_path
 
       @resource ||=
-        Librum::Core::Resources::ViewResource.new(
-          base_path:      base_path,
-          entity_class:   Librum::Iam::PasswordCredential,
-          form_component: Librum::Iam::View::Components::Users::Passwords::Form,
-          name:           'password',
-          singular:       true
+        Librum::Core::Resource.new(
+          base_path:    base_path,
+          components:   Librum::Iam::Users::Passwords::View::Components,
+          entity_class: Librum::Iam::PasswordCredential,
+          name:         'password',
+          singular:     true
         )
     end
 
     responder :html, Librum::Core::Responders::Html::ResourceResponder
 
-    action :edit,   Cuprum::Rails::Action
+    action(:edit, Cuprum::Rails::Action.subclass { |*| success(nil) })
 
     action :update, Librum::Iam::Actions::Users::Passwords::Update
   end
