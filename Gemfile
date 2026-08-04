@@ -23,8 +23,7 @@ gem 'stannum', '~> 0.4'
 gem 'librum-components',
   git: 'https://github.com/sleepingkingstudios/librum-components'
 gem 'librum-core',
-  branch: 'main',
-  git:    'https://github.com/sleepingkingstudios/librum-core'
+  git: 'https://github.com/sleepingkingstudios/librum-core'
 
 group :development, :test do
   gem 'annotaterb', '~> 4.14'
