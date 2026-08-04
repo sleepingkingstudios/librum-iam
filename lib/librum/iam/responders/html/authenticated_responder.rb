@@ -9,8 +9,12 @@ module Librum::Iam::Responders::Html
       match :failure,
         error: Librum::Core::Errors::AuthenticationError \
       do |result|
+        page =
+          Librum::Iam::Authentication::Sessions::View::Pages::LoginPage
+          .new(result:)
+
         render_component(
-          Librum::Iam::View::Pages::LoginPage.new(result),
+          page,
           layout: 'login',
           status: :unauthorized
         )

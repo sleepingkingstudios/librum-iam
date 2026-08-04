@@ -10,7 +10,7 @@ RSpec.describe Librum::Iam::UsersController, type: :controller do
   describe '.resource' do
     subject(:resource) { described_class.resource }
 
-    it { expect(resource).to be_a Librum::Core::Resources::ViewResource }
+    it { expect(resource).to be_a Librum::Core::Resource }
 
     it { expect(resource.actions).to be == Set.new(%w[show]) }
 
@@ -20,9 +20,8 @@ RSpec.describe Librum::Iam::UsersController, type: :controller do
 
     it { expect(resource.singular?).to be true }
 
-    it 'should define the block component' do
-      expect(resource.block_component)
-        .to be Librum::Iam::View::Components::Users::Block
+    it 'should define the components' do
+      expect(resource.components).to be Librum::Iam::Users::View::Components
     end
   end
 

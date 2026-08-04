@@ -17,7 +17,7 @@ RSpec.describe Librum::Iam::Users::PasswordsController, type: :controller do
       Librum::Iam::PasswordCredential
     end
 
-    it { expect(resource).to be_a Librum::Core::Resources::ViewResource }
+    it { expect(resource).to be_a Librum::Core::Resource }
 
     it { expect(resource.base_path).to be == base_path }
 
@@ -27,9 +27,9 @@ RSpec.describe Librum::Iam::Users::PasswordsController, type: :controller do
 
     it { expect(resource.singular?).to be true }
 
-    it 'should define the form component' do
-      expect(resource.form_component)
-        .to be Librum::Iam::View::Components::Users::Passwords::Form
+    it 'should define the components' do
+      expect(resource.components)
+        .to be Librum::Iam::Users::Passwords::View::Components
     end
   end
 

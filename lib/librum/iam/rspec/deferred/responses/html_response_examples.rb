@@ -12,7 +12,7 @@ module Librum::Iam::RSpec::Deferred::Responses
 
     deferred_examples 'should render the login page' do
       include_deferred 'should render component',
-        Librum::Iam::View::Pages::LoginPage,
+        Librum::Iam::Authentication::Sessions::View::Pages::LoginPage,
         assigns:     {},
         http_status: :unauthorized,
         layout:      'login',

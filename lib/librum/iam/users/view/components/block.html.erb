@@ -1,0 +1,15 @@
+<%= render(components::DataList.new(data:, fields:)) %>
+
+<h2 class="title is-4">Security</h2>
+
+<p>
+  <%=
+    render(
+      components::Link.new(
+        icon: 'user-lock',
+        text: 'Update Password',
+        url:   Librum::Iam::Engine.config.authentication_user_password_path
+      )
+    )
+  %>
+</p>
