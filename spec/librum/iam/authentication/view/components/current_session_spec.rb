@@ -103,7 +103,7 @@ do
             <div class="level-right">
               <div class="level-item">
                 <form class="is-inline-block" action="/authentication/sessions" accept-charset="UTF-8" method="post">
-                  <input type="hidden" name="_method" value="delete" autocomplete="off">
+                  <input type="hidden" name="_method" value="delete">
 
                   <input type="hidden" name="authenticity_token" value="[token]" autocomplete="off">
 
@@ -176,7 +176,7 @@ do
             <div class="level-right">
               <div class="level-item">
                 <form class="is-inline-block" action="/authentication/sessions" accept-charset="UTF-8" method="post">
-                  <input type="hidden" name="_method" value="delete" autocomplete="off">
+                  <input type="hidden" name="_method" value="delete">
 
                   <input type="hidden" name="authenticity_token" value="[token]" autocomplete="off">
 

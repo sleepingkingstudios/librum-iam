@@ -25,7 +25,7 @@ do
     let(:snapshot) do
       <<~HTML
         <form action="/authentication/user/password" accept-charset="UTF-8" method="post">
-          <input type="hidden" name="_method" value="patch" autocomplete="off">
+          <input type="hidden" name="_method" value="patch">
 
           <input type="hidden" name="authenticity_token" value="[token]" autocomplete="off">
 
@@ -125,7 +125,7 @@ do
       let(:snapshot) do
         <<~HTML
           <form action="/authentication/user/password" accept-charset="UTF-8" method="post">
-            <input type="hidden" name="_method" value="patch" autocomplete="off">
+            <input type="hidden" name="_method" value="patch">
 
             <input type="hidden" name="authenticity_token" value="[token]" autocomplete="off">
 
